@@ -1,26 +1,212 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	/* Using Creative & Bold  Color Palatte*/
+	--background: #fff9f2;
+	--foreground: #25201e;
+
+	/* Brand colors */
+	--primary: #e56b43;
+	--primary-foreground: #ffffff;
+	--primary-hover: #cc5632;
+
+	--secondary: #d8a83e;
+	--secondary-foreground: #25201e;
+	--secondary-hover: #c2932f;
+
+	/* Surface colors */
+	--surface: #f4e5d5;
+	--card: #ffffff;
+	--card-foreground: #25201e;
+
+	--popover: #ffffff;
+	--popover-foreground: #25201e;
+
+	/* Text colors */
+	--muted: #f4e5d5;
+	--muted-foreground: #756b64;
+	--text-inverse: #ffffff;
+
+	/* Accent colors */
+	--accent: #d8a83e;
+	--accent-foreground: #25201e;
+
+	/* UI colors */
+	--border: #e8d8c9;
+	--input: #e8d8c9;
+	--ring: #e56b43;
+
+	--destructive: #dc2626;
+
+	/* Chart colors */
+	--chart-1: #e56b43;
+	--chart-2: #d8a83e;
+	--chart-3: #25201e;
+	--chart-4: #cc5632;
+	--chart-5: #f4e5d5;
+
+	/* Radius */
+	--radius: 0.625rem;
+
+	/* Sidebar */
+	--sidebar: #f4e5d5;
+	--sidebar-foreground: #25201e;
+	--sidebar-primary: #e56b43;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #d8a83e;
+	--sidebar-accent-foreground: #25201e;
+	--sidebar-border: #e8d8c9;
+	--sidebar-ring: #e56b43;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	/* Background & text */
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+
+	/* Brand */
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary-hover: var(--primary-hover);
+
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary-hover: var(--secondary-hover);
+
+	/* Surfaces */
+	--color-surface: var(--surface);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+
+	/* Text */
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-text-inverse: var(--text-inverse);
+
+	/* Accent */
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+
+	/* UI */
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-destructive: var(--destructive);
+
+	/* Custom colors */
+	--color-brand: var(--primary);
+	--color-brand-hover: var(--primary-hover);
+	--color-gold: var(--secondary);
+
+	/* Charts */
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+
+	/* Sidebar */
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+
+	/* Radius */
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+	/* Dark theme */
+	--background: #25201e;
+	--foreground: #fff9f2;
+
+	--card: #332b27;
+	--card-foreground: #fff9f2;
+
+	--popover: #332b27;
+	--popover-foreground: #fff9f2;
+
+	--primary: #e56b43;
+	--primary-foreground: #ffffff;
+	--primary-hover: #f0805b;
+
+	--secondary: #d8a83e;
+	--secondary-foreground: #25201e;
+	--secondary-hover: #e6b94f;
+
+	--surface: #332b27;
+
+	--muted: #40352f;
+	--muted-foreground: #c0ada1;
+
+	--accent: #d8a83e;
+	--accent-foreground: #25201e;
+
+	--border: #51433a;
+	--input: #51433a;
+	--ring: #e56b43;
+
+	--destructive: #ef4444;
+
+	/* Dark charts */
+	--chart-1: #e56b43;
+	--chart-2: #d8a83e;
+	--chart-3: #f4e5d5;
+	--chart-4: #cc5632;
+	--chart-5: #756b64;
+
+	/* Dark sidebar */
+	--sidebar: #332b27;
+	--sidebar-foreground: #fff9f2;
+	--sidebar-primary: #e56b43;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #d8a83e;
+	--sidebar-accent-foreground: #25201e;
+	--sidebar-border: #51433a;
+	--sidebar-ring: #e56b43;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+
+	html {
+		@apply font-sans;
+	}
 }
+
+/* Creative & Bold color palette
+Main background = #FFF9F2
+Secondary background = #F4E5D5
+Primary text = #25201E
+Brand accent = #E56B43
+Secondary accent = #D8A83E */
+
+/* Modern & Fresh color palette
+Professional, fresh and trustworthy
+Main background =	#F8FAFC
+Secondary background  = #E2E8F0
+Primary text =	#172554
+Brand accent = #4F6BED
+Secondary accent= #5E9C91 */
