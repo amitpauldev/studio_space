@@ -1,11 +1,10 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import AuthenticatedState from "./athenticated-state";
 import MobileNav from "./mobile-nav";
 import Nav from "./nav";
-import { authClient } from "@/lib/auth-client";
+import { Suspense } from "react";
+import { LoaderIcon } from "lucide-react";
 
 export const navLinks = [
 	{ name: "Home", href: "/" },
@@ -15,9 +14,6 @@ export const navLinks = [
 ];
 
 const Header = () => {
-	const { data: session } = authClient.useSession();
-	const user = session?.user;
-
 	return (
 		<header className="sticky top-0 shadow-md py-2 bg-secondary ring-1 ring-primary/40 z-50">
 			<div className="flex items-center justify-between max-w-7xl px-4 mx-auto z-10">
@@ -43,25 +39,15 @@ const Header = () => {
 					<Nav />
 				</div>
 
-				{user ? (
+				<Suspense
+					fallback={
+						<div className="animate-spin w-8 h-8">
+							<LoaderIcon />
+						</div>
+					}
+				>
 					<AuthenticatedState />
-				) : (
-					<div className="hidden md:flex items-center gap-2 text-sm">
-						<Link
-							href="/login"
-							className="px-4 py-2 border border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
-						>
-							Login
-						</Link>
-
-						<Link
-							href="/register"
-							className="px-3 py-2 bg-primary text-white rounded-xl tracking-tighter hover:bg-primary/80 transition-colors duration-300"
-						>
-							Register
-						</Link>
-					</div>
-				)}
+				</Suspense>
 			</div>
 		</header>
 	);

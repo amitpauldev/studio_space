@@ -23,7 +23,7 @@ const HeroLeft = () => {
 			</p>
 
 			{/* CTA buttons */}
-			<div className="flex flex-wrap items-center gap-3">
+			<div className="flex flex-col sm:flex-row items-center gap-3">
 				<Link
 					href="/studios"
 					className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/30 text-white text-sm font-medium hover:bg-white/10 transition-colors duration-300 cursor-pointer"
@@ -41,7 +41,7 @@ const HeroLeft = () => {
 			</div>
 
 			{/* Trusted by */}
-			<div className="flex items-center gap-3 text-sm text-white/70">
+			<div className="flex flex-col sm:flex-row items-center gap-3 text-sm text-white/70">
 				<span>Trusted by leading artists:</span>
 				<div className="flex items-center gap-1.5">
 					<span className="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center text-white/80">

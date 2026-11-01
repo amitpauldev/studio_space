@@ -2,11 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Star } from "lucide-react";
-import {
-	Card,
-	CardContent,
-	CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 type StudioCardProps = {
 	name: string;
@@ -69,23 +65,21 @@ const StudioCard = ({
 				{/* 2-line description */}
 				<p className="text-sm text-foreground/70 line-clamp-2">{description}</p>
 
-				<p className="flex items-center gap-1.5 text-sm text-foreground/60">
+				<p className="flex items-center gap-1.5 text-sm text-foreground/60 ">
 					<MapPin size={14} />
-					{location}
+					<span className="line-clamp-1">{location}</span>
 				</p>
 
 				<div className="flex items-center justify-between border-t border-foreground/10 pt-3 mt-2">
 					<p className="text-primary font-bold">
 						${pricePerHour}{" "}
-						<span className="text-sm text-foreground/60 font-normal">
-							/ hr
-						</span>
+						<span className="text-sm text-foreground/60 font-normal">/ hr</span>
 					</p>
 					<Link
 						href={href}
 						className="px-3.5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300"
 					>
-						View Details
+						<span className="max-[450px]:hidden">View</span> Details
 					</Link>
 				</div>
 			</CardContent>

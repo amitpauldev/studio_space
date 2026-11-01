@@ -5,21 +5,21 @@ import { Camera, Drama, Mic, Music, Palette } from "lucide-react";
 export const categories = [
 	{
 		name: "Photo Studios",
-		slug: "photostudios",
+		slug: "photo-studios",
 		icon: Camera,
 		color: "text-chart-1",
 		bgColor: "bg-chart-1/15",
 	},
 	{
 		name: "Sound Stages",
-		slug: "soundstages",
+		slug: "sound-stages",
 		icon: Drama,
 		color: "text-chart-2",
 		bgColor: "bg-chart-2/15",
 	},
 	{
 		name: "Podcast Rooms",
-		slug: "podcastrooms",
+		slug: "podcast-rooms",
 		icon: Mic,
 		color: "text-chart-5",
 		bgColor: "bg-chart-3/15",
@@ -40,6 +40,19 @@ export const categories = [
 	},
 ];
 
+const CategoryCard = ({ category }: { category: (typeof categories)[0] }) => {
+	const Icon = category.icon;
+	return (
+		<Link
+			href={`/studios/${category.slug}`}
+			className="bg-white/5 px-4 py-6 ring-1 ring-white/15 rounded-xl flex flex-col items-center gap-2 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:ring-primary/60 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+		>
+			<Icon size={28} strokeWidth={1.5} className={category.color} />
+			<h3 className="font-semibold text-sm text-center">{category.name}</h3>
+		</Link>
+	);
+};
+
 const CategorySection = () => {
 	return (
 		<section className="mt-16">
@@ -48,21 +61,9 @@ const CategorySection = () => {
 			</h2>
 
 			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-				{categories.map((category) => {
-					const Icon = category.icon;
-					return (
-						<Link
-							key={category.slug}
-							href={`/studios/${category.slug}`}
-							className="bg-white/5 px-4 py-6 ring-1 ring-white/15 rounded-xl flex flex-col items-center gap-2 text-foreground backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:ring-primary/60 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5 cursor-pointer"
-						>
-							<Icon size={28} strokeWidth={1.5} className={category.color} />
-							<h3 className="font-semibold text-sm text-center">
-								{category.name}
-							</h3>
-						</Link>
-					);
-				})}
+				{categories.map((category) => (
+					<CategoryCard key={category.slug} category={category} />
+				))}
 			</div>
 		</section>
 	);

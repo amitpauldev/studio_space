@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
 	Carousel,
-	type CarouselApi,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,
@@ -22,17 +19,6 @@ const featuredStudios = [
 		pricePerHour: 25,
 		rating: 4.9,
 		location: "Gulshan, Dhaka",
-	},
-	{
-		name: "Bass Line Rehearsal Room",
-		description:
-			"Acoustic-treated jam space with backline, drum kit, and PA system — perfect for band practice before the gig.",
-		image:
-			"https://images.unsplash.com/photo-1511379938547-c1f6947680bc?auto=format&fit=crop&w=800&q=80",
-		category: "Rehearsal",
-		pricePerHour: 15,
-		rating: 4.8,
-		location: "Banani, Dhaka",
 	},
 	{
 		name: "Echo Mix Mastering Suite",
@@ -70,20 +56,9 @@ const featuredStudios = [
 ];
 
 const FeaturedStudios = () => {
-	const [api, setApi] = useState<CarouselApi>();
-
-	// Autoplay every 9 seconds
-	useEffect(() => {
-		if (!api) return;
-		const interval = setInterval(() => {
-			api.scrollNext();
-		}, 9000);
-		return () => clearInterval(interval);
-	}, [api]);
-
 	return (
 		<section className="mt-16">
-			<Carousel setApi={setApi} opts={{ loop: true, align: "start" }}>
+			<Carousel opts={{ loop: true, align: "start" }}>
 				{/* Heading + arrows */}
 				<div className="flex items-center justify-between mb-6 px-1">
 					<h2 className="text-2xl md:text-3xl font-bold">Featured Studios</h2>

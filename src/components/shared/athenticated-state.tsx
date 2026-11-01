@@ -57,130 +57,150 @@ export default function AuthenticatedState() {
 
 	return (
 		<>
-			<DropdownMenu>
-				<DropdownMenuTrigger
-					nativeButton={false}
-					render={
-						<div className="flex items-center gap-.5 cursor-pointer">
-							<span className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-								<span className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-									<Image
-										src={userImage}
-										alt="User Avatar"
-										width={32}
-										height={32}
-										className="rounded-full"
-									/>
-								</span>
-							</span>
-							<div className="hidden sm:flex flex-col text-sm">
-								<span className="ml-2">{userName}</span>
-								<span className="ml-2 text-[12px] text-white/80">
-									{userEmail}
-								</span>
-							</div>
-							<ChevronDown className="ml-2 sm:hidden" size={16} />
-						</div>
-					}
-				/>
+			{user ? (
+				<div>
+					<DropdownMenu>
+						<DropdownMenuTrigger
+							nativeButton={false}
+							render={
+								<div className="flex items-center gap-.5 cursor-pointer">
+									<span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+										<span className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center">
+											<Image
+												src={userImage}
+												alt="User Avatar"
+												width={32}
+												height={32}
+												className="rounded-full"
+											/>
+										</span>
+									</span>
+									<div className="hidden sm:flex flex-col text-sm">
+										<span className="ml-2">{userName}</span>
+										<span className="ml-2 text-[12px] text-white/80">
+											{userEmail}
+										</span>
+									</div>
+									<ChevronDown className="ml-2 sm:hidden" size={16} />
+								</div>
+							}
+						/>
 
-				<DropdownMenuContent className="text-nowrap w-45">
-					<DropdownMenuItem>
-						<div className="flex sm:hidden flex-col text-sm">
-							<span className="ml-2">{userName}</span>
-							<span className="ml-2 text-[12px] text-muted-foreground">
-								{userEmail}
-							</span>
-						</div>
-					</DropdownMenuItem>
+						<DropdownMenuContent className="text-nowrap w-45 bg-secondary text-white">
+							<DropdownMenuItem>
+								<div className="flex sm:hidden flex-col text-sm">
+									<span className="ml-2">{userName}</span>
+									<span className="ml-2 text-[12px] text-white/80">
+										{userEmail}
+									</span>
+								</div>
+							</DropdownMenuItem>
 
-					<DropdownMenuItem
-						render={<Link href="/dashboard" />}
-						className={
-							pathname === "/dashboard"
-								? "bg-primary text-primary-foreground cursor-pointer"
-								: "cursor-pointer"
-						}
+							<DropdownMenuItem
+								render={<Link href="/dashboard" />}
+								className={
+									pathname === "/dashboard"
+										? "bg-primary text-primary-foreground cursor-pointer"
+										: "cursor-pointer"
+								}
+							>
+								<LayoutGridCircles />
+								Dashboard
+							</DropdownMenuItem>
+
+							<DropdownMenuItem
+								render={<Link href="/add-new-studio" />}
+								className={
+									pathname === "/add-new-studio"
+										? "bg-primary text-primary-foreground cursor-pointer"
+										: "cursor-pointer"
+								}
+							>
+								<DatabasePlus />
+								Add New Studio
+							</DropdownMenuItem>
+
+							<DropdownMenuItem
+								render={<Link href="/my-studio-listings" />}
+								className={
+									pathname === "/my-studio-listings"
+										? "bg-primary text-primary-foreground cursor-pointer"
+										: "cursor-pointer"
+								}
+							>
+								<FolderCog />
+								My Studio Listings
+							</DropdownMenuItem>
+
+							<DropdownMenuItem
+								render={<Link href="/my-bookings" />}
+								className={
+									pathname === "/my-bookings"
+										? "bg-primary text-primary-foreground cursor-pointer"
+										: "cursor-pointer"
+								}
+							>
+								<Bookmark />
+								My Bookings
+							</DropdownMenuItem>
+
+							<DropdownMenuSeparator />
+
+							<DropdownMenuItem
+								variant="destructive"
+								className="cursor-pointer"
+								onClick={() => setDialogOpen(true)}
+							>
+								<LogOutIcon />
+								Log out
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+						<DialogContent>
+							<DialogHeader>
+								<DialogTitle>Log out of StudioSpace?</DialogTitle>
+								<DialogDescription>
+									You can log back in anytime with your account.
+								</DialogDescription>
+							</DialogHeader>
+							<DialogFooter>
+								<Button
+									variant="outline"
+									onClick={() => setDialogOpen(false)}
+									disabled={pending}
+								>
+									Cancel
+								</Button>
+								<Button
+									variant="destructive"
+									onClick={handleLogout}
+									disabled={pending}
+								>
+									{pending ? "Logging out..." : "Log out"}
+								</Button>
+							</DialogFooter>
+						</DialogContent>
+					</Dialog>
+				</div>
+			) : (
+				<div className="flex items-center gap-2 text-sm">
+					<Link
+						href="/login"
+						className="px-4 py-2 border border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
 					>
-						<LayoutGridCircles />
-						Dashboard
-					</DropdownMenuItem>
+						Login
+					</Link>
 
-					<DropdownMenuItem
-						render={<Link href="/add-new-studio" />}
-						className={
-							pathname === "/add-new-studio"
-								? "bg-primary text-primary-foreground cursor-pointer"
-								: "cursor-pointer"
-						}
+					<Link
+						href="/register"
+						className="px-3 py-2 bg-primary text-white rounded-xl tracking-tighter hover:bg-primary/80 transition-colors duration-300"
 					>
-						<DatabasePlus />
-						Add New Studio
-					</DropdownMenuItem>
-
-					<DropdownMenuItem
-						render={<Link href="/my-studio-listings" />}
-						className={
-							pathname === "/my-studio-listings"
-								? "bg-primary text-primary-foreground cursor-pointer"
-								: "cursor-pointer"
-						}
-					>
-						<FolderCog />
-						My Studio Listings
-					</DropdownMenuItem>
-
-					<DropdownMenuItem
-						render={<Link href="/my-bookings" />}
-						className={
-							pathname === "/my-bookings"
-								? "bg-primary text-primary-foreground cursor-pointer"
-								: "cursor-pointer"
-						}
-					>
-						<Bookmark />
-						My Bookings
-					</DropdownMenuItem>
-
-					<DropdownMenuSeparator />
-
-					<DropdownMenuItem
-						variant="destructive"
-						className="cursor-pointer"
-						onClick={() => setDialogOpen(true)}
-					>
-						<LogOutIcon />
-						Log out
-					</DropdownMenuItem>
-				</DropdownMenuContent>
-			</DropdownMenu>
-
-			<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Log out of StudioSpace?</DialogTitle>
-						<DialogDescription>
-							You can log back in anytime with your account.
-						</DialogDescription>
-					</DialogHeader>
-					<DialogFooter>
-						<Button
-							variant="outline"
-							onClick={() => setDialogOpen(false)}
-							disabled={pending}
-						>
-							Cancel
-						</Button>
-						<Button
-							variant="destructive"
-							onClick={handleLogout}
-							disabled={pending}
-						>
-							{pending ? "Logging out..." : "Log out"}
-						</Button>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
+						Register
+					</Link>
+				</div>
+			)}
 		</>
 	);
 }

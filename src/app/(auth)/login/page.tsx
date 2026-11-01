@@ -63,7 +63,7 @@ const LoginPage = () => {
 	// };
 
 	return (
-		<main className="min-h-screen bg-background lg:grid lg:grid-cols-2">
+		<main className="min-h-screen lg:grid lg:grid-cols-2">
 			{/* Left Branding Section */}
 			<section className="relative hidden lg:flex flex-col justify-between overflow-hidden bg-primary p-12 xl:p-16 text-primary-foreground">
 				{/* Decorative Elements */}
@@ -75,7 +75,7 @@ const LoginPage = () => {
 				<div className="relative z-10">
 					<Link href="/" className="">
 						<Image
-							src="/images/logo-reverse.png"
+							src="/images/logo.png"
 							alt="StudioSpace Logo"
 							width={100}
 							height={100}
@@ -137,14 +137,11 @@ const LoginPage = () => {
 							<Image
 								src="/images/logo.png"
 								alt="StudioSpace Logo"
-								width={42}
-								height={42}
-								className="h-10 w-auto object-contain"
+								width={100}
+								height={100}
+								className="h-20 w-auto object-contain"
 								priority
 							/>
-							<span className="text-xl font-bold tracking-tight text-foreground">
-								studio space
-							</span>
 						</Link>
 
 						<h1 className="text-3xl font-extrabold tracking-tight text-foreground">
