@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Camera, Drama, Mic, Music, Palette } from "lucide-react";
 
-const categories = [
+export const categories = [
 	{
 		name: "Photo Studios",
 		slug: "photostudios",
