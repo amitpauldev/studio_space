@@ -1,7 +1,7 @@
 import React from "react";
 
-const HostGuarantee = () => {
-	return <div>HostGuarantee</div>;
+const HowItWorks = () => {
+	return <div>Host</div>;
 };
 
-export default HostGuarantee;
+export default HowItWorks;
