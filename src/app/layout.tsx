@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
-		<html lang="en" className={`${domine.className} h-full antialiased`}>
-			<body className="min-h-full">
+		<html lang="en" className={`${domine.className} h-full antialiased `}>
+			<body className="min-h-full bg-neutral-950">
 				<Header />
 				{children}
 				<Footer />

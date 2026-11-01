@@ -75,7 +75,7 @@ export default function AuthenticatedState() {
 							</span>
 							<div className="hidden sm:flex flex-col text-sm">
 								<span className="ml-2">{userName}</span>
-								<span className="ml-2 text-[12px] text-muted-foreground">
+								<span className="ml-2 text-[12px] text-white/80">
 									{userEmail}
 								</span>
 							</div>

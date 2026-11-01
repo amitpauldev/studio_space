@@ -6,17 +6,17 @@
 
 :root {
 	/* Using Creative & Bold  Color Palatte*/
-	--background: #fff9f2;
-	--foreground: #25201e;
+	--background: #25201e;
+	--foreground: #fff9f2;
 
 	/* Brand colors */
 	--primary: #e56b43;
 	--primary-foreground: #ffffff;
 	--primary-hover: #cc5632;
 
-	--secondary: #d8a83e;
+	--secondary: #50281b;
 	--secondary-foreground: #25201e;
-	--secondary-hover: #c2932f;
+	--secondary-hover: #82521e;
 
 	/* Surface colors */
 	--surface: #f4e5d5;
@@ -133,8 +133,8 @@
 
 .dark {
 	/* Dark theme */
-	--background: #25201e;
-	--foreground: #fff9f2;
+	--background: #fff9f2;
+	--foreground: #25201e;
 
 	--card: #332b27;
 	--card-foreground: #fff9f2;
@@ -146,9 +146,9 @@
 	--primary-foreground: #ffffff;
 	--primary-hover: #f0805b;
 
-	--secondary: #d8a83e;
+	--secondary: #50281b;
 	--secondary-foreground: #25201e;
-	--secondary-hover: #e6b94f;
+	--secondary-hover: #82521e;
 
 	--surface: #332b27;
 

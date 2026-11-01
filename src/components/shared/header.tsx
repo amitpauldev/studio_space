@@ -19,8 +19,8 @@ const Header = () => {
 	const user = session?.user;
 
 	return (
-		<header className="sticky top-0 shadow-md py-2 bg-white z-50">
-			<div className="flex items-center justify-between max-w-7xl px-4 mx-auto">
+		<header className="sticky top-0 shadow-md py-2 bg-secondary ring-1 ring-primary/40 z-50">
+			<div className="flex items-center justify-between max-w-7xl px-4 mx-auto z-10">
 				<div className="flex items-center gap-1">
 					<div className="md:hidden">
 						<MobileNav />
@@ -29,7 +29,7 @@ const Header = () => {
 					<Link href="/">
 						<div className="w-40 md:w-50">
 							<Image
-								src="/images/logo.png"
+								src="/images/logo-reverse.png"
 								alt="Logo"
 								width={100}
 								height={60}

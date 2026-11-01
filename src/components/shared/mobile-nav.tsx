@@ -22,7 +22,7 @@ export default function MobileNav() {
 		<DropdownMenu>
 			<DropdownMenuTrigger
 				render={
-					<Button variant="outline">
+					<Button className={"border border-white bg-primary"}>
 						<Menu className="w-6 h-6 cursor-pointer" />
 					</Button>
 				}
