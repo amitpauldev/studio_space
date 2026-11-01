@@ -1,4 +1,11 @@
-import { Clapperboard, LayoutGrid, Mic, Music, Palette, Camera } from "lucide-react";
+import {
+	Clapperboard,
+	LayoutGrid,
+	Mic,
+	Music,
+	Palette,
+	Camera,
+} from "lucide-react";
 
 export type Studio = {
 	id: number;
@@ -86,7 +93,7 @@ export const studios: Studio[] = [
 		description:
 			"Modern photo studio with cyc wall, softbox setups, changing room, and a live view tethering station.",
 		image:
-			"https://images.unsplash.com/photo-1554048612-b6a48e8e4c69?auto=format&fit=crop&w=800&q=80",
+			"https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
 		category: "Photography",
 		pricePerHour: 20,
 		rating: 4.8,
@@ -136,7 +143,7 @@ export const studios: Studio[] = [
 		description:
 			"Sun-soaked riverside atelier with easels, pottery wheels, and open shelving for every medium you bring.",
 		image:
-			"https://images.unsplash.com/photo-1513364776144-60967b0c8000?auto=format&fit=crop&w=800&q=80",
+			"https://images.unsplash.com/photo-1597960194599-22929afc25b1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
 		category: "Workshop",
 		pricePerHour: 12,
 		rating: 4.7,
@@ -185,7 +192,7 @@ export const studios: Studio[] = [
 		description:
 			"Flexible black-box stage for rehearsals, showcases, and workshop shoots with motorized lighting bars.",
 		image:
-			"https://images.unsplash.com/photo-1503690227667-67fe57800834?auto=format&fit=crop&w=800&q=80",
+			"https://images.unsplash.com/photo-1485095329183-d0797cdc5676?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
 		category: "Sound Stage",
 		pricePerHour: 40,
 		rating: 4.6,
