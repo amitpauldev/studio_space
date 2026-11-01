@@ -1,10 +1,11 @@
 "use client";
 
-// import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
 	const [password, setPassword] = useState("");
@@ -34,37 +35,37 @@ const RegisterPage = () => {
 			password: string;
 		};
 
-		// await authClient.signUp.email(
-		// 	{
-		// 		email: formValues.email,
-		// 		password: formValues.password,
-		// 		name: formValues.name,
-		// 	},
-		// 	{
-		// 		onRequest: (ctx) => {
-		// 			setIsRequesting(true);
-		// 			setPassword("");
-		// 			setConfirmPassword("");
-		// 		},
-		// 		onSuccess: (ctx) => {
-		// 			toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে।");
-		// 			setIsRequesting(false);
-		// 			router.replace("/profile");
-		// 			router.refresh();
-		// 		},
-		// 		onError: (ctx) => {
-		// 			toast.error("একটি সমস্যা হয়েছে। আবার চেষ্টা করুন");
-		// 			setIsError(ctx.error.message);
-		// 			setIsRequesting(false);
-		// 			setPassword("");
-		// 			setConfirmPassword("");
+		await authClient.signUp.email(
+			{
+				email: formValues.email,
+				password: formValues.password,
+				name: formValues.name,
+			},
+			{
+				onRequest: (ctx) => {
+					setIsRequesting(true);
+					setPassword("");
+					setConfirmPassword("");
+				},
+				onSuccess: (ctx) => {
+					toast.success("Account created Successfully!");
+					setIsRequesting(false);
+					router.replace("/");
+					router.refresh();
+				},
+				onError: (ctx) => {
+					toast.error("An error occurred. Please try again.");
+					setIsError(ctx.error.message);
+					setIsRequesting(false);
+					setPassword("");
+					setConfirmPassword("");
 
-		// 			setTimeout(() => {
-		// 				setIsError("");
-		// 			}, 7000);
-		// 		},
-		// 	},
-		// );
+					setTimeout(() => {
+						setIsError("");
+					}, 7000);
+				},
+			},
+		);
 	};
 
 	// const handleGoogleSignIn = async () => {

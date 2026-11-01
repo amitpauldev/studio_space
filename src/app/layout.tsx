@@ -3,6 +3,7 @@ import { Domine } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/shared/footer";
 import Header from "@/components/shared/header";
+import { Toaster } from "react-hot-toast";
 
 const domine = Domine({
 	subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 				<Header />
 				{children}
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	);

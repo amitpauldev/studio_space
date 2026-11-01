@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import AuthenticatedState from "./athenticated-state";
 import MobileNav from "./mobile-nav";
 import Nav from "./nav";
+import { authClient } from "@/lib/auth-client";
 
 export const navLinks = [
 	{ name: "Home", href: "/" },
@@ -12,6 +15,9 @@ export const navLinks = [
 ];
 
 const Header = () => {
+	const { data: session } = authClient.useSession();
+	const user = session?.user;
+
 	return (
 		<header className="sticky top-0 shadow-md py-2 bg-white z-50">
 			<div className="flex items-center justify-between max-w-7xl px-4 mx-auto">
@@ -37,25 +43,25 @@ const Header = () => {
 					<Nav />
 				</div>
 
-				{/* login button */}
-				<div className="hidden md:flex items-center gap-2 text-sm">
-					<Link
-						href="/login"
-						className="px-4 py-2 border border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
-					>
-						Login
-					</Link>
+				{user ? (
+					<AuthenticatedState />
+				) : (
+					<div className="hidden md:flex items-center gap-2 text-sm">
+						<Link
+							href="/login"
+							className="px-4 py-2 border border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
+						>
+							Login
+						</Link>
 
-					<Link
-						href="/register"
-						className="px-3 py-2 bg-primary text-white rounded-xl tracking-tighter hover:bg-primary/80 transition-colors duration-300"
-					>
-						Register
-					</Link>
-				</div>
-
-				{/* User Profile */}
-				<AuthenticatedState />
+						<Link
+							href="/register"
+							className="px-3 py-2 bg-primary text-white rounded-xl tracking-tighter hover:bg-primary/80 transition-colors duration-300"
+						>
+							Register
+						</Link>
+					</div>
+				)}
 			</div>
 		</header>
 	);

@@ -4,8 +4,9 @@ import Link from "next/link";
 import {} from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-// import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
 	const [isRequesting, setIsRequesting] = useState(false);
@@ -21,32 +22,32 @@ const LoginPage = () => {
 			password: string;
 		};
 
-		// await authClient.signIn.email(
-		//     {
-		//         email: formValues.email,
-		//         password: formValues.password,
-		//     },
-		//     {
-		//         onRequest: (ctx) => {
-		//             setIsRequesting(true);
-		//         },
-		//         onSuccess: (ctx) => {
-		//             toast.success("Login Successful");
-		//             setIsRequesting(false);
-		//             router.replace("/");
-		//             router.refresh();
-		//         },
-		//         onError: (ctx) => {
-		//             toast.error("Login Failed");
-		//             setIsError(ctx.error.message);
-		//             setIsRequesting(false);
+		await authClient.signIn.email(
+			{
+				email: formValues.email,
+				password: formValues.password,
+			},
+			{
+				onRequest: (ctx) => {
+					setIsRequesting(true);
+				},
+				onSuccess: (ctx) => {
+					toast.success("Login Successful");
+					setIsRequesting(false);
+					router.replace("/");
+					router.refresh();
+				},
+				onError: (ctx) => {
+					toast.error("An error occurred. Please try again.");
+					setIsError(ctx.error.message);
+					setIsRequesting(false);
 
-		//             setTimeout(() => {
-		//                 setIsError("");
-		//             }, 7000);
-		//         },
-		//     },
-		// );
+					setTimeout(() => {
+						setIsError("");
+					}, 7000);
+				},
+			},
+		);
 	};
 
 	// const handleGoogleSignIn = async () => {
