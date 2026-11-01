@@ -1,13 +1,13 @@
-import React from "react";
+import StudiosBrowse from "@/components/shared/studios-browse";
+import { studios } from "@/lib/studios-data";
 
 const PhotoStudiosPage = () => {
 	return (
-		<div className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-12 text-center mt-1">
-			<p className="text-lg font-semibold">Photo Studios</p>
-			<p className="mt-1 text-sm text-foreground/60">
-				Coming soon — curated photo studios will be listed here.
-			</p>
-		</div>
+		<StudiosBrowse
+			title="Photo Studios"
+			description="Daylight lofts and professional studios for portraits, products, and shoots"
+			studios={studios.filter((studio) => studio.category === "Photography")}
+		/>
 	);
 };
 

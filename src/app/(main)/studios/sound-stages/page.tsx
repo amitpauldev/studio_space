@@ -1,13 +1,13 @@
-import React from "react";
+import StudiosBrowse from "@/components/shared/studios-browse";
+import { studios } from "@/lib/studios-data";
 
 const SoundStagesPage = () => {
 	return (
-		<div className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-12 text-center mt-1">
-			<p className="text-lg font-semibold">Sound Stages</p>
-			<p className="mt-1 text-sm text-foreground/60">
-				Coming soon — curated sound stages will be listed here.
-			</p>
-		</div>
+		<StudiosBrowse
+			title="Sound Stages"
+			description="Full-scale stages for film sets, commercials, and live showcases"
+			studios={studios.filter((studio) => studio.category === "Sound Stage")}
+		/>
 	);
 };
 

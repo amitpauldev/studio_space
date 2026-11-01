@@ -36,8 +36,8 @@ const HowItWorks = () => {
 			<div className="text-center max-w-xl mx-auto">
 				<h2 className="text-2xl md:text-3xl font-bold">How It Works</h2>
 				<p className="mt-2 text-sm md:text-base text-foreground/70">
-					From finding the right space to publishing what you make — four
-					simple steps take you there.
+					From finding the right space to publishing what you make — four simple
+					steps take you there.
 				</p>
 			</div>
 
