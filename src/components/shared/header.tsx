@@ -40,14 +40,14 @@ const Header = () => {
 				{/* login button */}
 				<div className="hidden md:flex items-center gap-2 text-sm">
 					<Link
-						href="/signup"
+						href="/login"
 						className="px-4 py-2 border border-primary text-primary rounded-xl hover:bg-primary hover:text-white transition-colors duration-300"
 					>
 						Login
 					</Link>
 
 					<Link
-						href="/login"
+						href="/register"
 						className="px-3 py-2 bg-primary text-white rounded-xl tracking-tighter hover:bg-primary/80 transition-colors duration-300"
 					>
 						Register
