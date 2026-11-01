@@ -1,7 +1,14 @@
 import React from "react";
 
-const SoundStages = () => {
-	return <div>SoundStages</div>;
+const SoundStagesPage = () => {
+	return (
+		<div className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-12 text-center mt-1">
+			<p className="text-lg font-semibold">Sound Stages</p>
+			<p className="mt-1 text-sm text-foreground/60">
+				Coming soon — curated sound stages will be listed here.
+			</p>
+		</div>
+	);
 };
 
-export default SoundStages;
+export default SoundStagesPage;

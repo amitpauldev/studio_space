@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import StudioCard from "@/components/shared/studio-card";
 
-const featuredStudios = [
+export const featuredStudios = [
 	{
 		name: "Harmony Recording Studio",
 		description:
