@@ -20,7 +20,7 @@ import {
 /* Owned by the site owner — update these details in one place */
 const founder = {
 	name: "Amit Paul",
-	photo: "/images/my-photo.png",
+	photo: "/images/photo.png",
 	role: "Founder & Developer, StudioSpace",
 	bio: "I'm Amit Paul, a passionate web developer and a student at Jahangirnagar University. StudioSpace was created from my interest in combining technology, creativity, and practical problem-solving. My vision is to make creative spaces easier to discover and accessible to creators, while helping studio owners connect with people who need their spaces.",
 	location: "Gazipur, Bangladesh",

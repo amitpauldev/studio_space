@@ -1,13 +1,15 @@
 import CategorySection from "@/components/home/category-section";
 import FeaturedStudios from "@/components/home/featured-studios";
-import HeroSection from "@/components/home/hero-section";
+import HeroSection from "@/components/home/hero-down";
+import HeroSlider from "@/components/home/hero-slider";
 import HostGuarantee from "@/components/home/hostgurantee";
 import HowItWorks from "@/components/home/how-It-works";
 
 export default function HomePage() {
 	return (
-		<main className="min-h-screen p-4 md:p-8 relative overflow-hidden bg-neutral-950">
+		<main className="min-h-screen px-4 md:px-8 relative overflow-hidden bg-neutral-950">
 			<section className="mx-auto max-w-7xl z-10">
+				<HeroSlider />
 				<HeroSection />
 				<FeaturedStudios />
 				<CategorySection />

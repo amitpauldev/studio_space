@@ -12,7 +12,7 @@ import {
 
 const HeroLeft = () => {
 	return (
-		<div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left justify-center gap-6">
+		<div className="flex-1 hidden md:flex flex-col items-center md:items-start text-center md:text-left justify-center gap-6">
 			{/* Brand title */}
 			<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
 				Studio<span className="text-primary">Space</span>

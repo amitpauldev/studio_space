@@ -121,9 +121,9 @@ export default function AuthenticatedState() {
 							</DropdownMenuItem>
 
 							<DropdownMenuItem
-								render={<Link href="/my-studio-listings" />}
+								render={<Link href="/my-listings" />}
 								className={
-									pathname === "/my-studio-listings"
+									pathname === "/my-listings"
 										? "bg-primary text-primary-foreground cursor-pointer"
 										: "cursor-pointer"
 								}
