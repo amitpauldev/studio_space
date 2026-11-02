@@ -108,7 +108,10 @@ const StudiosBrowse = ({ title, description, studios }: StudiosBrowseProps) => {
 
 				{/* Sort */}
 				<div className="flex sm:items-center gap-1.5 rounded-xl bg-white/5 ring-1 ring-white/10 px-3 py-2.5 sm:py-1.5">
-					<SlidersHorizontal size={16} className="text-foreground/50 shrink-0" />
+					<SlidersHorizontal
+						size={16}
+						className="text-foreground/50 shrink-0"
+					/>
 					<select
 						value={sort}
 						onChange={(event) => setSort(event.target.value as SortValue)}
@@ -128,7 +131,7 @@ const StudiosBrowse = ({ title, description, studios }: StudiosBrowseProps) => {
 			{filteredStudios.length > 0 ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 					{filteredStudios.map((studio) => (
-						<StudioCard key={studio.id} {...studio} />
+						<StudioCard key={studio.id} studio={studio} view={false} />
 					))}
 				</div>
 			) : (

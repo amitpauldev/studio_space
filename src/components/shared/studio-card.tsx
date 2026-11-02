@@ -23,15 +23,22 @@ const categoryColors: Record<string, string> = {
 };
 
 const StudioCard = ({
-	name,
-	description,
-	image,
-	category,
-	pricePerHour,
-	rating,
-	location,
-	href = "/studios",
-}: StudioCardProps) => {
+	studio,
+	view,
+}: {
+	studio: StudioCardProps;
+	view: boolean;
+}) => {
+	const {
+		name,
+		description,
+		image,
+		category,
+		pricePerHour,
+		rating,
+		location,
+		href = "#",
+	} = studio;
 	return (
 		<Card className="rounded-2xl py-0 gap-0 border-none bg-white/5 ring-white/15 backdrop-blur-sm transition-[box-shadow,ring] duration-300 hover:ring-primary/60 hover:shadow-lg hover:shadow-primary/5">
 			{/* Image with category badge */}
@@ -79,7 +86,8 @@ const StudioCard = ({
 						href={href}
 						className="px-3.5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300"
 					>
-						<span className="max-[450px]:hidden">View</span> Details
+						<span className={view ? "max-[450px]:hidden" : ""}>View</span>{" "}
+						Details
 					</Link>
 				</div>
 			</CardContent>

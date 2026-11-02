@@ -64,8 +64,8 @@ export default function AuthenticatedState() {
 							nativeButton={false}
 							render={
 								<div className="flex items-center gap-.5 cursor-pointer">
-									<span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-										<span className="w-8 h-8 rounded-full bg-secondary/50 flex items-center justify-center">
+									<span className="w-10 h-10 rounded-full bg-primary/60 backdrop-blur-sm flex items-center justify-center">
+										<span className="w-8 h-8 rounded-full bg-secondary/60 backdrop-blur-sm flex items-center justify-center">
 											<Image
 												src={userImage}
 												alt="User Avatar"
@@ -86,7 +86,7 @@ export default function AuthenticatedState() {
 							}
 						/>
 
-						<DropdownMenuContent className="text-nowrap w-45 bg-secondary text-white">
+						<DropdownMenuContent className="text-nowrap w-45 bg-secondary/60 backdrop-blur-sm text-white">
 							<DropdownMenuItem>
 								<div className="flex sm:hidden flex-col text-sm">
 									<span className="ml-2">{userName}</span>
@@ -158,18 +158,19 @@ export default function AuthenticatedState() {
 					</DropdownMenu>
 
 					<Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-						<DialogContent>
+						<DialogContent className="bg-secondary text-white">
 							<DialogHeader>
 								<DialogTitle>Log out of StudioSpace?</DialogTitle>
-								<DialogDescription>
+								<DialogDescription className="text-white/80">
 									You can log back in anytime with your account.
 								</DialogDescription>
 							</DialogHeader>
-							<DialogFooter>
+							<DialogFooter className="bg-secondary/70">
 								<Button
 									variant="outline"
 									onClick={() => setDialogOpen(false)}
 									disabled={pending}
+									className="border border-primary text-primary hover:bg-primary hover:text-white transition-colors duration-300 cursor-pointer"
 								>
 									Cancel
 								</Button>
@@ -177,6 +178,7 @@ export default function AuthenticatedState() {
 									variant="destructive"
 									onClick={handleLogout}
 									disabled={pending}
+									className="bg-primary text-white hover:bg-primary/80 transition-colors duration-300 cursor-pointer"
 								>
 									{pending ? "Logging out..." : "Log out"}
 								</Button>

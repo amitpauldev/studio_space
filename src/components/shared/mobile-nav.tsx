@@ -23,14 +23,16 @@ export default function MobileNav() {
 			<DropdownMenuTrigger
 				render={
 					<Button
-						className={"border border-primary bg-secondary cursor-pointer"}
+						className={
+							"border border-primary bg-secondary/60 backdrop-blur-sm cursor-pointer"
+						}
 					>
 						<Menu className="w-6 h-6 cursor-pointer text-primary" />
 					</Button>
 				}
 			/>
 
-			<DropdownMenuContent className="w-40 bg-secondary text-white">
+			<DropdownMenuContent className="w-40 bg-secondary/60 backdrop-blur-sm text-white">
 				<DropdownMenuGroup>
 					<DropdownMenuLabel>Click to go</DropdownMenuLabel>
 

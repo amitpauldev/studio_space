@@ -15,7 +15,7 @@ export const navLinks = [
 
 const Header = () => {
 	return (
-		<header className="sticky top-0 shadow-md py-2 bg-secondary ring-1 ring-primary/40 z-50">
+		<header className="sticky top-0 py-2 border-b border-white/10 bg-black/60 backdrop-blur-sm z-50">
 			<div className="flex items-center justify-between max-w-7xl px-4 mx-auto z-10">
 				<div className="flex items-center gap-1">
 					<div className="md:hidden">
@@ -25,7 +25,7 @@ const Header = () => {
 					<Link href="/">
 						<div className="w-40 md:w-50">
 							<Image
-								src="/images/logo-reverse.png"
+								src="/images/logo.png"
 								alt="Logo"
 								width={100}
 								height={60}

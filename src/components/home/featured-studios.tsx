@@ -74,7 +74,7 @@ const FeaturedStudios = () => {
 							key={studio.name}
 							className="pl-2 basis-1/2 lg:basis-1/3"
 						>
-							<StudioCard {...studio} />
+							<StudioCard studio={studio} view={true} />
 						</CarouselItem>
 					))}
 				</CarouselContent>
