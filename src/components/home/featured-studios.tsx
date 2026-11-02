@@ -7,55 +7,17 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import StudioCard from "@/components/shared/studio-card";
+import { Studio } from "@/type/studioType";
 
-export const featuredStudios = [
-	{
-		name: "Harmony Recording Studio",
-		description:
-			"Fully-treated live room and control room with high-end monitors, vintage mics, and an experienced in-house engineer.",
-		image:
-			"https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80",
-		category: "Recording",
-		pricePerHour: 25,
-		rating: 4.9,
-		location: "Gulshan, Dhaka",
-	},
-	{
-		name: "Echo Mix Mastering Suite",
-		description:
-			"Dedicated mixing suite with hybrid analog-digital rig, calibrated monitoring, and same-day turnarounds.",
-		image:
-			"https://images.unsplash.com/photo-1461784121038-f088ca1e7714?auto=format&fit=crop&w=800&q=80",
-		category: "Mixing",
-		pricePerHour: 30,
-		rating: 4.7,
-		location: "Dhanmondi, Dhaka",
-	},
-	{
-		name: "Vocal Booth Podcast Space",
-		description:
-			"Dead-quiet vocal booth with multi-mic setups, remote guest tools, and 4K video capture for podcast shows.",
-		image:
-			"https://images.unsplash.com/photo-1524650359799-842906ca1c06?auto=format&fit=crop&w=800&q=80",
-		category: "Podcast",
-		pricePerHour: 20,
-		rating: 4.8,
-		location: "Uttara, Dhaka",
-	},
-	{
-		name: "Amped Live Session Studio",
-		description:
-			"Warehouse-style live room built for full-band sessions with natural reverb and multi-camera video capture.",
-		image:
-			"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=800&q=80",
-		category: "Recording",
-		pricePerHour: 35,
-		rating: 5.0,
-		location: "Mirpur, Dhaka",
-	},
-];
+const FeaturedStudios = async () => {
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_BACKEND_URL}/featured-studios`,
+		{
+			next: { revalidate: 60 * 60 * 24 }, // Revalidate every day
+		},
+	);
+	const studios = await res.json();
 
-const FeaturedStudios = () => {
 	return (
 		<section className="mt-16">
 			<Carousel opts={{ loop: true, align: "start" }}>
@@ -69,9 +31,9 @@ const FeaturedStudios = () => {
 				</div>
 
 				<CarouselContent className="-ml-2">
-					{featuredStudios.map((studio) => (
+					{studios.map((studio: Studio) => (
 						<CarouselItem
-							key={studio.name}
+							key={studio._id}
 							className="pl-2 basis-1/2 lg:basis-1/3"
 						>
 							<StudioCard studio={studio} view={true} />

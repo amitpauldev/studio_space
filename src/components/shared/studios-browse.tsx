@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import StudioCard from "@/components/shared/studio-card";
-import type { Studio } from "@/lib/studios-data";
+import { Studio } from "@/type/studioType";
 
 const sortOptions = [
 	{ value: "rating", label: "Top Rated" },
@@ -17,15 +17,18 @@ type SortValue = (typeof sortOptions)[number]["value"];
 const priceRange = [0, 20, 50, 100] as const;
 
 type StudiosBrowseProps = {
-	/** Page heading, e.g. "All Studios" */
-	title: string;
-	/** Subheading describing what is being browsed */
+	ratings: { _id?: string; rating: number }[];
+	categoryTitle: string;
 	description: string;
-	/** Studios available to this view */
 	studios: Studio[];
 };
 
-const StudiosBrowse = ({ title, description, studios }: StudiosBrowseProps) => {
+const StudiosBrowse = ({
+	ratings,
+	categoryTitle,
+	description,
+	studios,
+}: StudiosBrowseProps) => {
 	const [query, setQuery] = useState("");
 	const [sort, setSort] = useState<SortValue>("rating");
 	const [maxPrice, setMaxPrice] = useState(0); // 0 = no limit
@@ -34,34 +37,39 @@ const StudiosBrowse = ({ title, description, studios }: StudiosBrowseProps) => {
 		let result = studios.filter((studio) => {
 			const matchesQuery =
 				query.trim() === "" ||
-				studio.name.toLowerCase().includes(query.toLowerCase()) ||
+				studio.title.toLowerCase().includes(query.toLowerCase()) ||
 				studio.location.toLowerCase().includes(query.toLowerCase());
-			const matchesPrice = maxPrice === 0 || studio.pricePerHour <= maxPrice;
+			const matchesPrice = maxPrice === 0 || studio.hourlyRate <= maxPrice;
 			return matchesQuery && matchesPrice;
 		});
 
 		switch (sort) {
 			case "price-asc":
-				result = [...result].sort((a, b) => a.pricePerHour - b.pricePerHour);
+				result = [...result].sort((a, b) => a.hourlyRate - b.hourlyRate);
 				break;
 			case "price-desc":
-				result = [...result].sort((a, b) => b.pricePerHour - a.pricePerHour);
+				result = [...result].sort((a, b) => b.hourlyRate - a.hourlyRate);
 				break;
 			case "name":
-				result = [...result].sort((a, b) => a.name.localeCompare(b.name));
+				result = [...result].sort((a, b) => a.title.localeCompare(b.title));
 				break;
 			default:
-				result = [...result].sort((a, b) => b.rating - a.rating);
+				// result = [...result].sort((a, b) => b.rating - a.rating);
+				result = [...result].sort((a, b) => {
+					const aRating = ratings.find((r) => r._id === a._id)?.rating || 0;
+					const bRating = ratings.find((r) => r._id === b._id)?.rating || 0;
+					return bRating - aRating;
+				});
 		}
 
 		return result;
-	}, [studios, query, sort, maxPrice]);
+	}, [studios, ratings, query, sort, maxPrice]);
 
 	return (
 		<div>
 			{/* Heading */}
 			<div className="mb-6 px-1">
-				<h1 className="text-3xl md:text-4xl font-bold">{title}</h1>
+				<h1 className="text-3xl md:text-4xl font-bold">{categoryTitle}</h1>
 				<p className="mt-2 text-foreground/60">
 					{description} — {filteredStudios.length} studio
 					{filteredStudios.length !== 1 && "s"} found
@@ -131,7 +139,7 @@ const StudiosBrowse = ({ title, description, studios }: StudiosBrowseProps) => {
 			{filteredStudios.length > 0 ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 					{filteredStudios.map((studio) => (
-						<StudioCard key={studio.id} studio={studio} view={false} />
+						<StudioCard key={studio._id} studio={studio} view={false} />
 					))}
 				</div>
 			) : (

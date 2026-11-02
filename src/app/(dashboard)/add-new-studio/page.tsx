@@ -24,6 +24,7 @@ import {
 	Music4,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { create } from "domain";
 
 const categories = [
 	{ value: "photo-studio", label: "Photo Studio", icon: Camera },
@@ -169,6 +170,7 @@ const AddNewStudio = () => {
 			amenities: selectedAmenities,
 			host: { name: userName, email: userEmail },
 			status: "pending",
+			createdAt: new Date().toISOString(),
 		};
 		console.log("New studio listing:", payload);
 
