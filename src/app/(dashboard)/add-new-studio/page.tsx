@@ -24,7 +24,7 @@ import {
 	Music4,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import { create } from "domain";
+import { revalidateStudioPaths } from "@/lib/actions/studio";
 
 const categories = [
 	{ value: "photo-studio", label: "Photo Studio", icon: Camera },
@@ -152,7 +152,7 @@ const AddNewStudio = () => {
 		return nextErrors;
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const nextErrors = validate();
 		if (Object.keys(nextErrors).length > 0) {
@@ -171,15 +171,36 @@ const AddNewStudio = () => {
 			host: { name: userName, email: userEmail },
 			status: "pending",
 			createdAt: new Date().toISOString(),
+			updatedAt: new Date().toISOString(),
 		};
-		console.log("New studio listing:", payload);
 
-		// TODO: send `payload` to the backend listing API once available
-		toast.success("Studio listing created successfully!");
-		setValues(initialFormValues);
-		setSelectedAmenities([]);
-		setErrors({});
-		setIsSubmitting(false);
+		try {
+			const res = await fetch(
+				`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						authurization: "I am form frontend post",
+					},
+					body: JSON.stringify(payload),
+				},
+			);
+			if (!res.ok) {
+				toast.error("Problem occurred while creating studio listing");
+				return;
+			}
+			toast.success("Studio listing created successfully!");
+			setValues(initialFormValues);
+			await revalidateStudioPaths(payload.category);
+			setSelectedAmenities([]);
+			setErrors({});
+		} catch (error) {
+			console.error("Submission error:", error);
+			toast.error("A network error occurred. Please try again.");
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	const hasErrors = Object.values(errors).some(Boolean);
