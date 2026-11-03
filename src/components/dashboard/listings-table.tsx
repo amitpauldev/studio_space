@@ -11,7 +11,7 @@ import {
 
 const ListingsTable = ({ listings }: { listings: Studio[] }) => {
 	return (
-		<div className="hidden overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-xl shadow-black/20 md:block">
+		<div className="hidden overflow-x-auto rounded-2xl border border-white/10 bg-white/5 shadow-xl shadow-black/20 md:block">
 			<table className="w-full text-left">
 				<thead>
 					<tr className="border-b border-white/10 bg-white/5 text-xs uppercase tracking-wider text-muted-foreground">

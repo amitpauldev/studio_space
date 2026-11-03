@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { revalidateStudioPaths } from "@/lib/actions/studio";
+import { getTokenFromClient } from "@/lib/getJwtToken";
 
 const categories = [
 	{ value: "photo-studio", label: "Photo Studio", icon: Camera },
@@ -32,7 +33,6 @@ const categories = [
 	{ value: "podcast-lounge", label: "Podcast Lounge", icon: Mic },
 	{ value: "music-suite", label: "Music Suite", icon: Music4 },
 	{ value: "workshop", label: "Workshop", icon: Sparkles },
-	{ value: "sound-stage", label: "Sound Stage", icon: Clapperboard },
 	{ value: "rehearsal-space", label: "Rehearsal Space", icon: Music4 },
 ] as const;
 
@@ -174,6 +174,9 @@ const AddNewStudio = () => {
 			updatedAt: new Date().toISOString(),
 		};
 
+		// JWT Token
+		const jwtToken = await getTokenFromClient();
+
 		try {
 			const res = await fetch(
 				`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios`,
@@ -181,7 +184,7 @@ const AddNewStudio = () => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						authurization: "I am form frontend post",
+						authorization: `Bearer ${jwtToken}`,
 					},
 					body: JSON.stringify(payload),
 				},

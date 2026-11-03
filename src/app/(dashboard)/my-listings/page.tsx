@@ -46,7 +46,7 @@ const MyListings = () => {
 		fetchStudios();
 	}, [isPending, refreshKey]);
 
-	// user-owned spaces (ownerEmail match)
+	// only user's listings
 	const listings = useMemo(
 		() =>
 			userEmail
@@ -185,10 +185,10 @@ const MyListings = () => {
 					</div>
 				) : listings.length > 0 ? (
 					<>
-						{/* ==================== Desktop table ==================== */}
+						{/* Desktop table */}
 						<ListingsTable listings={listings} />
 
-						{/* ==================== Mobile cards ==================== */}
+						{/* Mobile cards */}
 						<div className="space-y-4 md:hidden">
 							{listings.map((listing) => (
 								<ListingCard key={listing._id} listing={listing} />
