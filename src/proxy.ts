@@ -25,6 +25,5 @@ export const config = {
 		"/my-listings",
 		"/my-bookings",
 		"/studio-details",
-		"/studio-details/:path+",
 	],
 };

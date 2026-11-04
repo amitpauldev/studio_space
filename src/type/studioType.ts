@@ -29,6 +29,15 @@ export interface Studio {
 	updatedAt?: string;
 }
 
+export interface StudioReview {
+	id: string;
+	name: string;
+	rating: number;
+	comment: string;
+	/** ISO date string */
+	date: string;
+}
+
 export interface CategoriesData {
 	categoryTitle: string;
 	categorySlug: string;
