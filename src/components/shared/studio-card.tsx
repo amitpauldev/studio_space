@@ -64,7 +64,7 @@ const StudioCard = ({ studio }: { studio: Studio }) => {
 						<span className="text-sm text-foreground/60 font-normal">/ hr</span>
 					</p>
 					<Link
-						href={`/studios/${_id}`}
+						href={`/studio-details/${_id}`}
 						className="px-3.5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300"
 					>
 						View Details

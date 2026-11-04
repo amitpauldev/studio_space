@@ -29,9 +29,12 @@ const StudiosMenu = () => {
 	useEffect(() => {
 		const fetchStudios = async () => {
 			try {
-				const res = await fetch(
-					`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios`,
-				);
+				const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+				if (!backendUrl) {
+					throw new Error("Backend URL is missing");
+				}
+				const res = await fetch(`${backendUrl}/studios`);
 
 				if (!res.ok) {
 					throw new Error("Failed to fetch studios");

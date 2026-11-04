@@ -6,8 +6,6 @@ export const categoryPill: Record<StudioCategory, string> = {
 	"podcast-lounge": "bg-rose-500/15 text-rose-400 ring-rose-500/30",
 	"music-suite": "bg-violet-500/15 text-violet-400 ring-violet-500/30",
 	workshop: "bg-fuchsia-500/15 text-fuchsia-400 ring-fuchsia-500/30",
-	"sound-stage": "bg-sky-500/15 text-sky-400 ring-sky-500/30",
-	"rehearsal-space": "bg-emerald-500/15 text-emerald-400 ring-emerald-500/30",
 };
 
 export const statusBadge: Record<StudioStatus, string> = {

@@ -8,15 +8,24 @@ const Nav = () => {
 	const pathname = usePathname();
 	return (
 		<nav className="md:flex items-center gap-3 lg:gap-5">
-			{navLinks.map((link) => (
-				<Link
-					href={link.href}
-					key={link.name}
-					className={`text-primary transition-all duration-300 border-primary hover:border hover:bg-white/10 hover:text-white/80 rounded-xl px-2 py-1 ${pathname === link.href ? "text-white/80 border border-primary/80" : ""}`}
-				>
-					{link.name}
-				</Link>
-			))}
+			{navLinks.map((link) => {
+				const isActive =
+					pathname === link.href ||
+					(link.href === "/studios" && pathname.startsWith("/studios/")) ||
+					(link.href === "/studios" && pathname.startsWith("/studio-details/"));
+
+				return (
+					<Link
+						href={link.href}
+						key={link.name}
+						className={`text-primary transition-all duration-300 border-primary hover:border hover:bg-white/10 hover:text-white/80 rounded-xl px-2 py-1 ${
+							isActive ? "text-white/80 border border-primary/80" : ""
+						}`}
+					>
+						{link.name}
+					</Link>
+				);
+			})}
 		</nav>
 	);
 };

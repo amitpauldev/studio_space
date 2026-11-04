@@ -145,11 +145,11 @@ const LoginPage = () => {
 						</Link>
 
 						<h1 className="text-3xl font-extrabold tracking-tight text-foreground">
-							Welcome back
+							Welcome to Studio Space
 						</h1>
 
 						<p className="mt-2 text-sm text-muted-foreground">
-							Login to your account to continue your creative journey.
+							You have to Login to your account to get the full access.
 						</p>
 					</div>
 
