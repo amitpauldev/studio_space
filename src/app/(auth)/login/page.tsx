@@ -63,9 +63,9 @@ const LoginPage = () => {
 	// };
 
 	return (
-		<main className="min-h-screen lg:grid lg:grid-cols-2">
+		<main className="min-h-screen lg:grid lg:grid-cols-2 bg-white/5">
 			{/* Left Branding Section */}
-			<section className="relative hidden lg:flex flex-col justify-between overflow-hidden bg-primary p-12 xl:p-16 text-primary-foreground">
+			<section className="relative hidden lg:flex flex-col justify-between overflow-hidden bg-secondary p-12 xl:p-16 text-primary-foreground">
 				{/* Decorative Elements */}
 				<div className="absolute -right-32 -top-32 h-96 w-96 rounded-full border border-white/10" />
 				<div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border border-white/10" />
@@ -75,7 +75,7 @@ const LoginPage = () => {
 				<div className="relative z-10">
 					<Link href="/" className="">
 						<Image
-							src="/images/logo.png"
+							src="/images/logo-white.png"
 							alt="StudioSpace Logo"
 							width={100}
 							height={100}
@@ -95,7 +95,7 @@ const LoginPage = () => {
 					<h1 className="text-4xl font-extrabold leading-tight tracking-tight xl:text-6xl">
 						Make room for
 						<br />
-						<span className="text-secondary">creativity.</span>
+						<span className="text-primary">creativity.</span>
 					</h1>
 
 					<p className="mt-6 max-w-md text-base leading-8 text-white/80 xl:text-lg">

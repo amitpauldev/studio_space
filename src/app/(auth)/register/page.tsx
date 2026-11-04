@@ -81,9 +81,9 @@ const RegisterPage = () => {
 	// };
 
 	return (
-		<main className="min-h-screen bg-background lg:grid lg:grid-cols-2">
+		<main className="min-h-screen bg-white/5 lg:grid lg:grid-cols-2">
 			{/* Left Branding Section */}
-			<section className="relative hidden flex-col justify-between overflow-hidden bg-primary p-12 text-primary-foreground lg:flex xl:p-16">
+			<section className="relative hidden flex-col justify-between overflow-hidden bg-secondary p-12 text-primary-foreground lg:flex xl:p-16">
 				{/* Decorative Elements */}
 				<div className="absolute -right-32 -top-32 h-96 w-96 rounded-full border border-white/10" />
 				<div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border border-white/10" />
@@ -93,7 +93,7 @@ const RegisterPage = () => {
 				<div className="relative z-10">
 					<Link href="/" className="">
 						<Image
-							src="/images/logo-reverse.png"
+							src="/images/logo-white.png"
 							alt="StudioSpace Logo"
 							width={100}
 							height={100}
@@ -113,7 +113,7 @@ const RegisterPage = () => {
 					<h1 className="text-4xl font-extrabold leading-tight tracking-tight xl:text-6xl">
 						Your next
 						<br />
-						<span className="text-secondary">great idea</span>
+						<span className="text-primary">great idea</span>
 						<br />
 						starts here.
 					</h1>

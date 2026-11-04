@@ -8,7 +8,6 @@ import {
 	Mic,
 	Music4,
 	Palette,
-	Volume2,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,9 +31,6 @@ const StudiosMenu = () => {
 			try {
 				const res = await fetch(
 					`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios`,
-					{
-						next: { revalidate: 7 * 60 * 60 * 24 }, // Revalidate every 7 days
-					},
 				);
 
 				if (!res.ok) {

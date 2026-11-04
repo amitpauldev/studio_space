@@ -63,7 +63,7 @@ const Footer = () => {
 					<div className="flex flex-col gap-4">
 						<Link href="/" className="w-40">
 							<Image
-								src="/images/logo-reverse.png"
+								src="/images/logo-white.png"
 								alt="StudioSpace logo"
 								width={160}
 								height={60}
@@ -71,8 +71,8 @@ const Footer = () => {
 						</Link>
 						<p className="text-sm text-foreground/70 leading-relaxed max-w-xs">
 							Connecting musicians, artists, and creators with professional
-							recording studios and creative spaces — so every great idea has
-							a place to come to life.
+							recording studios and creative spaces — so every great idea has a
+							place to come to life.
 						</p>
 						{/* Social links */}
 						<div className="flex items-center gap-2.5 mt-1">
@@ -168,9 +168,7 @@ const Footer = () => {
 
 				{/* Bottom bar */}
 				<div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-foreground/60">
-					<p>
-						© {new Date().getFullYear()} StudioSpace. All rights reserved.
-					</p>
+					<p>© {new Date().getFullYear()} StudioSpace. All rights reserved.</p>
 					<div className="flex items-center gap-5">
 						<Link
 							href="/"

@@ -12,7 +12,7 @@ const Nav = () => {
 				<Link
 					href={link.href}
 					key={link.name}
-					className={`text-white/80 hover:border-white/80  rounded-xl px-2 py-1 transition-colors duration-300 ${pathname === link.href ? "text-white/80 border border-white/80" : ""}`}
+					className={`text-primary transition-all duration-300 border-primary hover:border hover:bg-white/10 hover:text-white/80 rounded-xl px-2 py-1 ${pathname === link.href ? "text-white/80 border border-primary/80" : ""}`}
 				>
 					{link.name}
 				</Link>
