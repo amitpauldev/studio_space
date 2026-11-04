@@ -139,7 +139,7 @@ const StudiosBrowse = ({
 			{filteredStudios.length > 0 ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 					{filteredStudios.map((studio) => (
-						<StudioCard key={studio._id} studio={studio} view={false} />
+						<StudioCard key={studio._id} studio={studio} />
 					))}
 				</div>
 			) : (

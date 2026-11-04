@@ -1,18 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import {
-	Guitar,
-	Headphones,
-	Mic,
-	Sparkles,
-	Star,
-	CalendarDays,
-	Play,
-} from "lucide-react";
+import { Guitar, Headphones, Mic, Sparkles, Star, Play } from "lucide-react";
 
 const HeroLeft = () => {
 	return (
-		<div className="flex-1 hidden md:flex flex-col items-center md:items-start text-center md:text-left justify-center gap-6">
+		<div className="flex-1 hidden lg:flex flex-col items-center md:items-start text-center md:text-left justify-center gap-6">
 			{/* Brand title */}
 			<h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
 				Studio<span className="text-primary">Space</span>
@@ -30,13 +22,6 @@ const HeroLeft = () => {
 				>
 					<Play size={16} />
 					Watch Demo
-				</Link>
-				<Link
-					href="/studios"
-					className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300 cursor-pointer"
-				>
-					<CalendarDays size={16} />
-					Book Space Now
 				</Link>
 			</div>
 
@@ -69,8 +54,13 @@ const HeroRight = () => {
 				Premium Locations Available
 			</div>
 
+			{/* Brand title */}
+			<h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white md:hidden">
+				Studio<span className="text-primary">Space</span>
+			</h1>
+
 			{/* Pitch */}
-			<h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+			<h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
 				Discover Your Perfect Studio
 			</h2>
 			<p className="text-white/80 text-sm sm:text-base max-w-lg">
@@ -103,10 +93,12 @@ const HeroRight = () => {
 
 const HeroSection = () => {
 	return (
-		<div className="relative overflow-hidden rounded-3xl bg-neutral-950">
-			<div className="flex flex-col md:flex-row items-center justify-between gap-8 p-6 sm:p-10 lg:p-16">
-				<HeroLeft />
-				<HeroRight />
+		<div className="px-4 md:px-8 lg:px-16">
+			<div className="relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-xs">
+				<div className="flex flex-col md:flex-row items-center justify-between gap-8 p-6 sm:p-10 lg:p-16">
+					<HeroLeft />
+					<HeroRight />
+				</div>
 			</div>
 		</div>
 	);

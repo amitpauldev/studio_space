@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
@@ -9,26 +8,27 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Image from "next/image";
 
 const slides = [
 	{
 		id: 1,
 		category: "YOUR CREATIVE JOURNEY STARTS HERE",
-		title: "Find your space.",
+		title: "Find space.",
 		highlight: "Create your story.",
 		description:
 			"Discover inspiring studios, creative spaces, and unique locations designed to bring your vision to life.",
-		image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+		image: "/images/hero-slider-images/creative-workspace.webp",
 		alt: "Modern creative workspace",
 	},
 	{
 		id: 2,
 		category: "MADE FOR YOUR NEXT BIG IDEA",
-		title: "Where ideas",
+		title: "Where creative ideas",
 		highlight: "come to life.",
 		description:
 			"From photography studios to recording spaces, discover the perfect environment for your next masterpiece.",
-		image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04",
+		image: "/images/hero-slider-images/music-recording-studio.webp",
 		alt: "Professional music recording studio",
 	},
 	{
@@ -38,7 +38,7 @@ const slides = [
 		highlight: "Their inspiration.",
 		description:
 			"Share your creative space with a community of passionate creators and turn your studio into an opportunity.",
-		image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+		image: "/images/hero-slider-images/interior-design.webp",
 		alt: "Beautiful creative studio interior",
 	},
 ];
@@ -90,7 +90,7 @@ export default function HeroSlider() {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	return (
-		<section className="relative overflow-hidden ">
+		<section className="relative rounded-b-3xl overflow-hidden ">
 			<Swiper
 				modules={[Autoplay, EffectFade]}
 				effect="fade"
@@ -107,24 +107,35 @@ export default function HeroSlider() {
 				{slides.map((slide) => (
 					<SwiperSlide key={slide.id}>
 						<div className="relative flex min-h-[650px] items-center sm:min-h-[700px] lg:min-h-[760px]">
-							{/* Background Image */}
+							{/*  Masked Wrapper Container */}
 							<div
-								className="absolute inset-0 bg-cover bg-center"
+								className="absolute inset-0"
 								style={{
-									backgroundImage: `url(${slide.image})`,
+									WebkitMaskImage:
+										"linear-gradient(to bottom, black 50%, transparent 100%), linear-gradient(to right, black 70%, transparent 100%)",
+									maskImage:
+										"linear-gradient(to bottom, black 50%, transparent 100%), linear-gradient(to right, black 70%, transparent 100%)",
+									WebkitMaskComposite: "source-in",
+									maskComposite: "intersect",
 								}}
-							/>
+							>
+								{/* Background Image */}
+								<div
+									className="absolute inset-0 bg-cover bg-center"
+									style={{ backgroundImage: `url(${slide.image})` }}
+								/>
 
-							{/* Image Overlay */}
-							<div className="absolute inset-0 bg-black/50" />
+								{/* Gradient Overlays */}
+								<div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+								<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
 
-							{/* Gradient Overlay */}
-							<div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-
-							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
+								{/* Glow Effects */}
+								<div className="absolute top-1/3 left-1/2 w-[70%] h-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[120px]" />
+								<div className="absolute bottom-0 right-0 w-1/3 h-1/3 rounded-full bg-secondary/20 blur-[100px]" />
+							</div>
 
 							{/* Content */}
-							<div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
+							<div className="relative z-10 mx-auto w-full max-w-7xl py-24 px-4 md:px-8 lg:px-16">
 								<div className="max-w-3xl">
 									{/* Category */}
 									<div className="mb-6 flex items-center gap-3">
@@ -163,7 +174,7 @@ export default function HeroSlider() {
 										</Link>
 
 										<Link
-											href="/studios"
+											href="/add-new-studio"
 											className="inline-flex h-12 items-center gap-3 rounded-full border border-white/25 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-secondary hover:bg-secondary hover:text-black sm:h-14 sm:px-8 sm:text-base"
 										>
 											Host Your Space
@@ -173,12 +184,21 @@ export default function HeroSlider() {
 									{/* Trust indicator */}
 									<div className="mt-10 flex items-center gap-3 text-sm text-white/50">
 										<div className="flex -space-x-2">
-											{["A", "B", "C"].map((letter) => (
+											{[
+												"/images/creators-images/Hiya.webp",
+												"/images/creators-images/pass.webp",
+												"/images/creators-images/teitel.jpg",
+											].map((image) => (
 												<div
-													key={letter}
-													className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-black bg-[#332b27] text-xs font-semibold text-secondary"
+													key={image}
+													className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border-2 border-black bg-[#332b27] text-xs font-semibold text-secondary"
 												>
-													{letter}
+													<Image
+														src={image}
+														height={50}
+														width={50}
+														alt="icon"
+													/>
 												</div>
 											))}
 										</div>

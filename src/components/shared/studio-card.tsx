@@ -11,11 +11,9 @@ const categoryColors: Record<StudioCategory, string> = {
 	"podcast-lounge": "bg-rose-500 text-white",
 	"music-suite": "bg-secondary text-secondary-foreground",
 	workshop: "bg-purple-600 text-white",
-	"sound-stage": "bg-blue-600 text-white",
-	"rehearsal-space": "bg-green-600 text-white",
 };
 
-const StudioCard = ({ studio, view }: { studio: Studio; view: boolean }) => {
+const StudioCard = ({ studio }: { studio: Studio }) => {
 	const { _id, title, category, location, hourlyRate, imageUrl, overview } =
 		studio;
 
@@ -69,8 +67,7 @@ const StudioCard = ({ studio, view }: { studio: Studio; view: boolean }) => {
 						href={`/studios/${_id}`}
 						className="px-3.5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300"
 					>
-						<span className={view ? "max-[450px]:hidden" : ""}>View</span>{" "}
-						Details
+						View Details
 					</Link>
 				</div>
 			</CardContent>

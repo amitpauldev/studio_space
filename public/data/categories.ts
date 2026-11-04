@@ -26,11 +26,6 @@ export const categoriesData = [
 		categorySlug: "workshop",
 		description: "Creative workshop spaces.",
 	},
-	{
-		categoryTitle: "Rehearsal Spaces",
-		categorySlug: "rehearsal-space",
-		description: "Dedicated music rehearsal spaces.",
-	},
 ] as const satisfies {
 	categoryTitle: string;
 	categorySlug: StudioCategory;

@@ -3,9 +3,7 @@ export type StudioCategory =
 	| "film-stage"
 	| "podcast-lounge"
 	| "music-suite"
-	| "workshop"
-	| "sound-stage"
-	| "rehearsal-space";
+	| "workshop";
 
 export type StudioStatus = "pending" | "approved" | "rejected";
 

@@ -233,10 +233,6 @@ const About = () => {
 									<Code2 size={12} className="text-primary" />
 									Designed &amp; developed end-to-end
 								</span>
-								<span className="inline-flex items-center gap-1.5 rounded-full bg-white/5 ring-1 ring-white/15 px-3 py-1.5 text-xs text-foreground/70">
-									<GraduationCap size={12} className="text-primary" />
-									Programming Hero — Assignment 8
-								</span>
 							</div>
 						</div>
 					</div>

@@ -13,13 +13,13 @@ const FeaturedStudios = async () => {
 	const res = await fetch(
 		`${process.env.NEXT_PUBLIC_BACKEND_URL}/featured-studios`,
 		{
-			next: { revalidate: 60 * 60 * 24 }, // Revalidate every day
+			next: { revalidate: 7 * 24 * 60 * 60 }, // Revalidate every 7 days
 		},
 	);
 	const studios = await res.json();
 
 	return (
-		<section className="mt-16">
+		<section className="mt-16 px-4 md:px-8 lg:px-16">
 			<Carousel opts={{ loop: true, align: "start" }}>
 				{/* Heading + arrows */}
 				<div className="flex items-center justify-between mb-6 px-1">
@@ -34,9 +34,9 @@ const FeaturedStudios = async () => {
 					{studios.map((studio: Studio) => (
 						<CarouselItem
 							key={studio._id}
-							className="pl-2 basis-1/2 lg:basis-1/3"
+							className="pl-2 sm:basis-1/2 lg:basis-1/3"
 						>
-							<StudioCard studio={studio} view={true} />
+							<StudioCard studio={studio} />
 						</CarouselItem>
 					))}
 				</CarouselContent>

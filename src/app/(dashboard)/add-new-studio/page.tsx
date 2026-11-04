@@ -33,7 +33,6 @@ const categories = [
 	{ value: "podcast-lounge", label: "Podcast Lounge", icon: Mic },
 	{ value: "music-suite", label: "Music Suite", icon: Music4 },
 	{ value: "workshop", label: "Workshop", icon: Sparkles },
-	{ value: "rehearsal-space", label: "Rehearsal Space", icon: Music4 },
 ] as const;
 
 const amenityOptions = [

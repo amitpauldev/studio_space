@@ -37,7 +37,7 @@ const guarantees = [
 
 const HostGuarantee = () => {
 	return (
-		<section className="mt-16">
+		<section className="mt-16 px-4 md:px-8 lg:px-16">
 			<div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-primary/[0.04] px-6 py-10 md:px-10 md:py-12">
 				{/* Heading */}
 				<div className="max-w-xl">

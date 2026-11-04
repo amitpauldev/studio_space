@@ -31,7 +31,7 @@ const steps = [
 
 const HowItWorks = () => {
 	return (
-		<section className="mt-16">
+		<section className="mt-16 px-4 md:px-8 lg:px-16">
 			{/* Heading */}
 			<div className="text-center max-w-xl mx-auto">
 				<h2 className="text-2xl md:text-3xl font-bold">How It Works</h2>

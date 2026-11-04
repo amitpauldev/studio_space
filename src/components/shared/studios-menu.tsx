@@ -21,8 +21,6 @@ const categoryIcons = {
 	"podcast-lounge": Mic,
 	"music-suite": Music4,
 	workshop: Palette,
-	"sound-stage": Volume2,
-	"rehearsal-space": Music4,
 } satisfies Record<StudioCategory, typeof Camera>;
 
 const StudiosMenu = () => {
@@ -34,6 +32,9 @@ const StudiosMenu = () => {
 			try {
 				const res = await fetch(
 					`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios`,
+					{
+						next: { revalidate: 7 * 60 * 60 * 24 }, // Revalidate every 7 days
+					},
 				);
 
 				if (!res.ok) {
