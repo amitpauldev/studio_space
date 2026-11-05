@@ -99,7 +99,7 @@ const BookingCard = ({ booking, isCancelling, onCancel }: BookingCardProps) => {
 											type="button"
 											disabled={isCancelling}
 											onClick={() => onCancel(booking)}
-											className="flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg bg-red-500 text-sm font-semibold text-white transition hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-60"
+											className="cursor-pointer flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg bg-red-700 text-sm font-semibold text-white transition hover:bg-red-600 disabled:cursor-not-allowed disabled:opacity-60"
 										>
 											<XCircle size={14} />
 											{isCancelling ? "Cancelling…" : "Confirm Cancel"}

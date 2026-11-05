@@ -1,70 +1,185 @@
 # StudioSpace
 
-A photography-studio booking platform frontend where guests can browse creative spaces, request time slots, and hosts can list and manage their studios.
+**Discover, book, and manage creative spaces.**
 
-Built with [Next.js](https://nextjs.org) (App Router), [Tailwind CSS v4](https://tailwindcss.com), [better-auth](https://www.better-auth.com) + MongoDB, and [shadcn-style](https://ui.shadcn.com) components.
+StudioSpace is a photography and creative-studio booking platform designed for photographers, filmmakers, podcasters, musicians, and other creative professionals.
+
+Guests can explore creative spaces, view studio details, and request bookings. Hosts can list their studios, manage bookings, and monitor their listings through a dedicated dashboard.
+
+🔗 **Live Website:** https://studiospaces.vercel.app/
+
+---
 
 ## Features
 
-- Email & password authentication (better-auth with JWT sessions)
-- Browse studios by category and view studio details
-- Book a studio slot (date, time, duration, guests)
-- Host dashboard: add studios, manage listings, view profile, upcoming bookings & notifications
-- My Bookings with status badges (pending, confirmed, completed, cancelled) and cancel option for pending slots
+- **Authentication:** Secure email and password authentication using Better Auth.
+- **Interactive Hero Slider:** Responsive homepage banner with multiple slides powered by Swiper.js.
+- **Explore Studios:** Browse creative spaces by category and discover available studios.
+- **Studio Booking:** Request studio bookings by selecting a date, time, duration, and number of guests.
+- **Host Dashboard:** Update name and photo, add new studios, manage existing listings.
+- **My Bookings:** View booking history and track booking statuses.
+- **Booking Management:** Manage pending, confirmed, completed, and cancelled bookings.
+- **Booking Cancellation:** Cancel eligible pending booking requests.
+- **Responsive Design:** Enjoy a seamless experience across desktop, tablet, and mobile devices.
+- **Modern UI:** Clean and intuitive interface built with reusable components.
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- [Next.js](https://nextjs.org/) – React framework with App Router
+- [React](https://react.dev/) – UI development
+- [TypeScript](https://www.typescriptlang.org/) – Type safety
+- [Tailwind CSS v4](https://tailwindcss.com/) – Styling
+- [shadcn/ui](https://ui.shadcn.com/) – Reusable UI components
+
+### Authentication & Database
+
+- [Better Auth](https://www.better-auth.com/) – Authentication and session management
+- [MongoDB](https://www.mongodb.com/) – Database
+
+### Development & Deployment
+
+- Git & GitHub
+- Vercel
+- Node.js
+- npm
+
+---
 
 ## Getting Started
 
-Install dependencies:
+Follow these instructions to run StudioSpace locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js (LTS recommended)
+- npm
+- Git
+- MongoDB database (local or MongoDB Atlas)
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/amitpauldev/studio_space
+```
+
+Navigate to the project directory:
+
+```bash
+cd studio_space
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
-Create a `.env` file in the project root with:
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root:
 
 ```env
 MONGODB_URI=<your-mongodb-connection-string>
-BETTER_AUTH_SECRET=<random-secret>
+
+BETTER_AUTH_SECRET=<your-random-secret>
+
 BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_BACKEND_URL=<backend-api-url>
+
+NEXT_PUBLIC_BACKEND_URL=<your-backend-api-url>
+
 BASE_URL=http://localhost:3000
 ```
 
-Run the development server:
+Replace the placeholder values with your actual configuration.
+
+**Note:** Never commit your `.env` file or expose your authentication secrets.
+
+### 4. Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open your browser and visit:
 
-## Scripts
+[http://localhost:3000](http://localhost:3000)
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the dev server at localhost:3000 |
-| `npm run build` | Production build |
-| `npm run lint` | Run ESLint |
+---
+
+## Available Scripts
+
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the development server         |
+| `npm run build` | Build the application for production |
+| `npm run start` | Start the production server          |
+| `npm run lint`  | Run ESLint                           |
+
+---
 
 ## Project Structure
 
-```
+```text
 src/
-├── app/                  # Routes
-│   ├── (auth)/           # login / register
-│   ├── (main)/           # home, studios, studio details, about
-│   ├── (dashboard)/      # dashboard, my-bookings, my-listings, add-new-studio
-│   └── api/auth/         # better-auth catch-all handlers
+├── app/
+│   ├── (auth)/              # Login and registration
+│   ├── (main)/              # Homepage and studio pages
+│   ├── (dashboard)/         # Dashboard and booking management
+│   └── api/
+│       └── auth/            # Better Auth API handlers
+│
 ├── components/
-│   ├── ui/               # primitives (button, dialog, dropdown-menu, ...)
-│   ├── shared/           # header, nav, footer, studio cards
-│   ├── home/             # landing sections
-│   ├── studio-details/   # details view, booking dialog, reviews
-│   └── dashboard/        # listings, bookings, dashboard widgets
-├── lib/                  # auth config, JWT helpers, server actions
-└── type/                 # shared TypeScript types
+│   ├── ui/                  # Reusable UI components
+│   ├── shared/              # Header, footer, studio cards
+│   ├── home/                # Homepage sections
+│   ├── studio-details/      # Studio details and booking UI
+│   └── dashboard/           # Dashboard components
+│
+├── lib/                      # Utilities and authentication config
+├── type/                     # Shared TypeScript types
+│
+└── ...
 ```
+
+---
 
 ## Deployment
 
-The frontend deploys with any Node host; the backend/auth API requires a reachable MongoDB instance configured via the `.env` values above.
+The frontend is deployed on Vercel.
+
+**Live Website:** https://studiospaces.vercel.app/
+
+Ensure the required environment variables are configured in your deployment platform.
+
+If the application uses a separate backend API, make sure the backend is deployed and accessible, and that `NEXT_PUBLIC_BACKEND_URL` points to the correct API endpoint.
+
+---
+
+## Project Purpose
+
+StudioSpace aims to simplify the process of discovering and booking creative spaces while providing studio owners with an efficient platform to manage their listings and booking requests.
+
+---
+
+---
+
+## Developer
+
+**Amit Paul**  
+Full Stack Developer | Next.js & React
+
+- **GitHub:** [amitpauldev](https://github.com/amitpauldev)
+- **LinkedIn:** [Amit Paul](https://www.linkedin.com/in/amitpauldev/)
+- **Email:** amitpaul.per@gmail.com
+
+---
+
+## Acknowledgements
+
+**Developed as a web development project** to demonstrate modern frontend development, authentication, and booking management workflows.
