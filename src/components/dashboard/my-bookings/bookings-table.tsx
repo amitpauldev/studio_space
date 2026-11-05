@@ -177,7 +177,7 @@ const BookingRow = ({
 							type="button"
 							disabled={isCancelling}
 							onClick={() => setConfirming(true)}
-							className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-red-500/40 bg-red-500/10 px-3 text-xs font-semibold text-red-400 transition hover:bg-red-500/20 disabled:cursor-not-allowed disabled:opacity-60"
+							className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-red-500/40 bg-red-500/10 px-3 text-xs font-semibold text-red-400 transition hover:bg-red-500/20 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
 						>
 							<XCircle size={13} /> Cancel Booking
 						</button>

@@ -60,8 +60,10 @@ const StudioCard = ({ studio }: { studio: Studio }) => {
 
 				<div className="flex items-center justify-between border-t border-foreground/10 pt-3 mt-2">
 					<p className="text-primary font-bold">
-						${hourlyRate}{" "}
-						<span className="text-sm text-foreground/60 font-normal">/ hr</span>
+						${hourlyRate || "0"}
+						<span className="text-sm text-foreground/60 font-normal">
+							/hour
+						</span>
 					</p>
 					<Link
 						href={`/studio-details/${_id}`}

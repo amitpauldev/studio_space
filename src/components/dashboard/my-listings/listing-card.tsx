@@ -8,6 +8,7 @@ import {
 	statusDot,
 } from "./listing-styles";
 import DeleteListingButton from "./delete-listing-btn";
+import Link from "next/link";
 
 const ListingCard = ({ listing }: { listing: Studio }) => {
 	return (
@@ -61,12 +62,12 @@ const ListingCard = ({ listing }: { listing: Studio }) => {
 				</div>
 
 				<div className="flex gap-2 border-t border-white/10 pt-3">
-					<button
-						type="button"
+					<Link
+						href={`my-listings/${listing._id}`}
 						className="flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 text-sm font-semibold text-primary transition hover:bg-primary/20"
 					>
 						<SquarePen size={14} /> Update
-					</button>
+					</Link>
 					<DeleteListingButton
 						listingName={listing.title}
 						listingId={listing._id}

@@ -9,6 +9,7 @@ import {
 	statusDot,
 } from "./listing-styles";
 import DeleteListingButton from "./delete-listing-btn";
+import Link from "next/link";
 
 const ListingsTable = ({ listings }: { listings: Studio[] }) => {
 	return (
@@ -94,12 +95,12 @@ const ListingsTable = ({ listings }: { listings: Studio[] }) => {
 							{/* Actions */}
 							<td className="px-5 py-4">
 								<div className="flex items-center justify-end gap-2">
-									<button
-										type="button"
+									<Link
+										href={`my-listings/${listing._id}`}
 										className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 px-3 text-xs font-semibold text-primary transition hover:bg-primary/20"
 									>
 										<SquarePen size={13} /> Update
-									</button>
+									</Link>
 									<DeleteListingButton
 										listingName={listing.title}
 										listingId={listing._id}

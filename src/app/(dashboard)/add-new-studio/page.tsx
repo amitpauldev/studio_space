@@ -747,30 +747,33 @@ const AddNewStudio = () => {
 									</span>
 								)}
 							</div>
-
-							<div className="space-y-2 p-5">
-								<h3 className="text-lg font-bold">
+							<div className="p-4">
+								<span className="text-xl">
 									{values.title || "Your studio title"}
-								</h3>
-								<p className="flex items-center gap-1.5 text-sm text-white/50">
-									<MapPin size={14} className="shrink-0" />
-									<span className="truncate">
+								</span>
+								{/* 2-line description */}
+								<p className="text-sm text-foreground/70 line-clamp-2 my-3">
+									{values.overview || "Your studio overview."}
+								</p>
+
+								<p className="flex items-center gap-1.5 text-sm text-foreground/60 ">
+									<MapPin size={14} />
+									<span className="line-clamp-1">
 										{values.location || "Studio location"}
 									</span>
 								</p>
-								<div className="flex flex-wrap gap-2 pt-1">
-									<span className="rounded-lg bg-white/5 px-3 py-1.5 text-sm font-semibold">
-										${values.hourlyRate || "0"}/hour
-									</span>
-									<span className="rounded-lg bg-white/5 px-3 py-1.5 text-sm text-white/50">
-										Up to {values.maxCapacity || "—"} guests
+
+								<div className="flex items-center justify-between border-t border-foreground/10 pt-3 mt-2">
+									<p className="text-primary font-bold">
+										${values.hourlyRate || "0"}
+										<span className="text-sm text-foreground/60 font-normal">
+											/hour
+										</span>
+									</p>
+									<span className="px-3.5 py-2 rounded-xl bg-primary text-white text-sm font-medium hover:bg-primary/80 transition-colors duration-300">
+										View Details
 									</span>
 								</div>
-								{values.overview && (
-									<p className="line-clamp-3 pt-1 text-sm text-white/50">
-										{values.overview}
-									</p>
-								)}
 							</div>
 
 							<p className="border-t border-primary bg-white/5 px-5 py-3 text-xs text-white/50">
