@@ -3,8 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Building2, LogIn, Plus, TriangleAlert } from "lucide-react";
-import ListingsTable from "@/components/dashboard/listings-table";
-import ListingCard from "@/components/dashboard/listing-card";
+import ListingsTable from "@/components/dashboard/my-listings/listings-table";
+import ListingCard from "@/components/dashboard/my-listings/listing-card";
 import { authClient } from "@/lib/auth-client";
 import { Studio } from "@/type/studioType";
 
@@ -69,32 +69,6 @@ const MyListings = () => {
 								className="h-20 animate-pulse rounded-2xl bg-white/5"
 							/>
 						))}
-					</div>
-				</div>
-			</main>
-		);
-	}
-
-	/* ---------- Not logged in ---------- */
-	if (!userEmail) {
-		return (
-			<main className="min-h-screen">
-				<div className="mx-auto max-w-screen-xl px-4 py-10 sm:px-6 lg:px-8">
-					<div className="rounded-2xl border border-primary/30 bg-white/5 p-12 text-center">
-						<LogIn size={40} className="mx-auto text-primary" />
-						<h1 className="mt-4 text-2xl font-bold">
-							Please log in to view your listings
-						</h1>
-						<p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-							Your studio listings are tied to your StudioSpace account. Log in
-							to see the spaces registered to you.
-						</p>
-						<Link
-							href="/login"
-							className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition hover:bg-primary-hover"
-						>
-							<LogIn size={16} /> Log In
-						</Link>
 					</div>
 				</div>
 			</main>

@@ -9,7 +9,7 @@ import {
 	XCircle,
 } from "lucide-react";
 import { Booking } from "@/type/bookingType";
-import { categoryPill, fallbackPill } from "../listing-styles";
+import { categoryPill, fallbackPill } from "../my-listings/listing-styles";
 import { statusLoaderDot, statusPill } from "./booking-styles";
 import { formatBookingDate, formatTimeRange } from "./booking-utils";
 

@@ -1,5 +1,5 @@
 import { BookingStatus } from "@/type/bookingType";
-import { fallbackDot, fallbackPill } from "../listing-styles";
+import { fallbackDot, fallbackPill } from "../my-listings/listing-styles";
 
 export const bookingStatusBadge: Record<BookingStatus, string> = {
 	pending: "bg-amber-500/15 text-amber-400 ring-amber-500/30",

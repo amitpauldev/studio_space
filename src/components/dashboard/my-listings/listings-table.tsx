@@ -8,6 +8,7 @@ import {
 	statusBadge,
 	statusDot,
 } from "./listing-styles";
+import DeleteListingButton from "./delete-listing-btn";
 
 const ListingsTable = ({ listings }: { listings: Studio[] }) => {
 	return (
@@ -99,12 +100,10 @@ const ListingsTable = ({ listings }: { listings: Studio[] }) => {
 									>
 										<SquarePen size={13} /> Update
 									</button>
-									<button
-										type="button"
-										className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-red-500/40 bg-red-500/10 px-3 text-xs font-semibold text-red-400 transition hover:bg-red-500/20"
-									>
-										<Trash2 size={13} /> Delete
-									</button>
+									<DeleteListingButton
+										listingName={listing.title}
+										listingId={listing._id}
+									/>
 								</div>
 							</td>
 						</tr>

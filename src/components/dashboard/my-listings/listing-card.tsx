@@ -1,4 +1,3 @@
-import React from "react";
 import { MapPin, SquarePen, Trash2, Users } from "lucide-react";
 import { Studio } from "@/type/studioType";
 import {
@@ -8,6 +7,7 @@ import {
 	statusBadge,
 	statusDot,
 } from "./listing-styles";
+import DeleteListingButton from "./delete-listing-btn";
 
 const ListingCard = ({ listing }: { listing: Studio }) => {
 	return (
@@ -67,12 +67,11 @@ const ListingCard = ({ listing }: { listing: Studio }) => {
 					>
 						<SquarePen size={14} /> Update
 					</button>
-					<button
-						type="button"
-						className="flex h-9 flex-1 items-center justify-center gap-1.5 rounded-lg border border-red-500/40 bg-red-500/10 text-sm font-semibold text-red-400 transition hover:bg-red-500/20"
-					>
-						<Trash2 size={14} /> Delete
-					</button>
+					<DeleteListingButton
+						listingName={listing.title}
+						listingId={listing._id}
+						mobile={true}
+					/>
 				</div>
 			</div>
 		</article>

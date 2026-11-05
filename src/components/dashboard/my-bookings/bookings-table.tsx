@@ -8,18 +8,9 @@ import {
 	XCircle,
 } from "lucide-react";
 import { Booking } from "@/type/bookingType";
-import {
-	categoryPill,
-	fallbackPill,
-} from "../listing-styles";
-import {
-	statusLoaderDot,
-	statusPill,
-} from "./booking-styles";
-import {
-	formatBookingDate,
-	formatTimeRange,
-} from "./booking-utils";
+import { categoryPill, fallbackPill } from "../my-listings/listing-styles";
+import { statusLoaderDot, statusPill } from "./booking-styles";
+import { formatBookingDate, formatTimeRange } from "./booking-utils";
 
 type BookingsTableProps = {
 	bookings: Booking[];
@@ -77,8 +68,7 @@ const BookingRow = ({
 }) => {
 	const [confirming, setConfirming] = useState(false);
 
-	const total =
-		(booking.studio?.hourlyRate ?? 0) * booking.bookingDuration;
+	const total = (booking.studio?.hourlyRate ?? 0) * booking.bookingDuration;
 
 	return (
 		<tr className="border-b border-white/5 transition-colors last:border-b-0 hover:bg-white/5">
