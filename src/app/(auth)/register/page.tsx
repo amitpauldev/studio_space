@@ -68,17 +68,17 @@ const RegisterPage = () => {
 		);
 	};
 
-	// const handleGoogleSignIn = async () => {
-	// 	await authClient.signIn.social({
-	// 		provider: "google",
-	// 	});
-	// };
+	const handleGoogleSignIn = async () => {
+		await authClient.signIn.social({
+			provider: "google",
+		});
+	};
 
-	// const handleGitHubSignIn = async () => {
-	// 	await authClient.signIn.social({
-	// 		provider: "github",
-	// 	});
-	// };
+	const handleGitHubSignIn = async () => {
+		await authClient.signIn.social({
+			provider: "github",
+		});
+	};
 
 	return (
 		<main className="min-h-screen bg-white/5 lg:grid lg:grid-cols-2">
@@ -147,24 +147,6 @@ const RegisterPage = () => {
 				<div className="w-full max-w-md">
 					{/* Header */}
 					<div className="mb-7 text-center lg:text-left">
-						{/* Mobile Logo */}
-						<Link
-							href="/"
-							className="mb-7 inline-flex items-center justify-center gap-2 lg:hidden"
-						>
-							<Image
-								src="/images/logo.png"
-								alt="StudioSpace Logo"
-								width={42}
-								height={42}
-								className="h-10 w-auto object-contain"
-								priority
-							/>
-							<span className="text-xl font-bold tracking-tight text-foreground">
-								studio space
-							</span>
-						</Link>
-
 						<h1 className="text-3xl font-extrabold tracking-tight text-foreground">
 							Create your account
 						</h1>
@@ -181,7 +163,7 @@ const RegisterPage = () => {
 							<div>
 								<label
 									htmlFor="name"
-									className="mb-2 block text-sm font-semibold text-card-foreground"
+									className="mb-2 block text-sm font-semibold text-white"
 								>
 									Full name
 								</label>
@@ -200,7 +182,7 @@ const RegisterPage = () => {
 							<div>
 								<label
 									htmlFor="email"
-									className="mb-2 block text-sm font-semibold text-card-foreground"
+									className="mb-2 block text-sm font-semibold text-white"
 								>
 									Email address
 								</label>
@@ -219,7 +201,7 @@ const RegisterPage = () => {
 							<div>
 								<label
 									htmlFor="password"
-									className="mb-2 block text-sm font-semibold text-card-foreground"
+									className="mb-2 block text-sm font-semibold text-white"
 								>
 									Password
 								</label>
@@ -246,7 +228,7 @@ const RegisterPage = () => {
 							<div>
 								<label
 									htmlFor="confirmPassword"
-									className="mb-2 block text-sm font-semibold text-card-foreground"
+									className="mb-2 block text-sm font-semibold text-white"
 								>
 									Confirm password
 								</label>
@@ -293,8 +275,8 @@ const RegisterPage = () => {
 						<div className="grid grid-cols-2 gap-3">
 							<button
 								type="button"
-								// onClick={handleGoogleSignIn}
-								className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card text-xs font-semibold text-card-foreground transition hover:bg-muted"
+								onClick={handleGoogleSignIn}
+								className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card text-xs font-semibold text-white transition hover:bg-primary/30"
 							>
 								<svg viewBox="0 0 48 48" className="h-4 w-4" aria-hidden="true">
 									<path
@@ -319,8 +301,8 @@ const RegisterPage = () => {
 
 							<button
 								type="button"
-								// onClick={handleGitHubSignIn}
-								className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card text-xs font-semibold text-card-foreground transition hover:bg-muted"
+								onClick={handleGitHubSignIn}
+								className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card text-xs font-semibold text-white transition hover:bg-primary/30"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

@@ -39,15 +39,7 @@ const Header = () => {
 					<Nav />
 				</div>
 
-				<Suspense
-					fallback={
-						<div className="animate-spin w-8 h-8">
-							<LoaderIcon />
-						</div>
-					}
-				>
-					<AuthenticatedState />
-				</Suspense>
+				<AuthenticatedState />
 			</div>
 		</header>
 	);
