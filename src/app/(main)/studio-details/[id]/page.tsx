@@ -11,7 +11,7 @@ const StudioDetailsPage = async ({
 
 	const res = await fetch(
 		`${process.env.NEXT_PUBLIC_BACKEND_URL}/studios/id/${id}`,
-		{ next: { revalidate: 60 * 60 * 24 } }, // Revalidate every day
+		{ next: { revalidate: 7 * 60 * 60 * 24 } }, // Revalidate every 7 day
 	);
 	if (!res.ok) notFound();
 

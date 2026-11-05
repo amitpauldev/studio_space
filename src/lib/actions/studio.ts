@@ -7,3 +7,7 @@ export async function revalidateStudioPaths(category: string) {
 	revalidatePath("/studios");
 	revalidatePath(`/studios/${category}`);
 }
+
+export async function revalidateMyBookingsPaths() {
+	revalidatePath("/my-bookings");
+}

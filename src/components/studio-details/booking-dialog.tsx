@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/dialog";
 import { CircleDollarSign, Timer } from "lucide-react";
 import type { Studio } from "@/type/studioType";
+import { getTokenFromClient } from "@/lib/getJwtToken";
+import { revalidateMyBookingsPaths } from "@/lib/actions/studio";
+import { authClient } from "@/lib/auth-client";
 
 type BookingDialogProps = {
 	open: boolean;
@@ -59,6 +62,12 @@ const BookingDialog = ({ open, onOpenChange, studio }: BookingDialogProps) => {
 	const [startTime, setStartTime] = useState("15:00");
 	const [hours, setHours] = useState(2);
 	const [guests, setGuests] = useState(1);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const { data: session } = authClient.useSession();
+	const user = session?.user;
+	const userName = user?.name;
+	const userEmail = user?.email;
 
 	const basePrice = studio.hourlyRate * hours;
 	const deposit = Math.max(studio.securityDeposit, 0);
@@ -66,17 +75,68 @@ const BookingDialog = ({ open, onOpenChange, studio }: BookingDialogProps) => {
 
 	const endTime = formatMinutes(minutesFromTime(startTime) + hours * 60);
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		toast.success(`Booking request sent for ${studio.title}!`, {
-			duration: 4000,
-		});
-		onOpenChange(false);
+
+		if (!user) {
+			toast.error("You have to login for booking a space");
+			return;
+		}
+		setIsSubmitting(true);
+
+		const payload = {
+			studio: { ...studio },
+			bookingDate: date,
+			bookingStart: startTime,
+			bookingDuration: hours,
+			guests: guests,
+			renter: {
+				name: userName,
+				email: userEmail,
+			},
+			status: "pending",
+			createdAt: new Date().toISOString(),
+		};
+
+		// JWT Token
+		const jwtToken = await getTokenFromClient();
+
+		try {
+			const res = await fetch(
+				`${process.env.NEXT_PUBLIC_BACKEND_URL}/bookings`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						authorization: `Bearer ${jwtToken}`,
+					},
+					body: JSON.stringify(payload),
+				},
+			);
+			if (!res.ok) {
+				toast.error("Problem occurred while booking");
+				return;
+			}
+			toast.success(`Succesfully booked ${studio.title}!`, {
+				duration: 4000,
+			});
+			setDate("");
+			setGuests(1);
+			setHours(2);
+			setStartTime("");
+			await revalidateMyBookingsPaths();
+		} catch (error) {
+			console.error("Booking error:", error);
+			toast.error("A network error occurred. Please try again.");
+		} finally {
+			onOpenChange(false);
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
-			<DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-md">
+			<DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-md bg-secondary">
 				<DialogHeader>
 					<DialogTitle className="text-lg font-bold text-foreground">
 						Book {studio.title}
@@ -87,7 +147,7 @@ const BookingDialog = ({ open, onOpenChange, studio }: BookingDialogProps) => {
 					</DialogDescription>
 				</DialogHeader>
 
-				<form onSubmit={handleSubmit} className="flex flex-col gap-4">
+				<form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
 					<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 						{/* Date */}
 						<div>
@@ -197,8 +257,14 @@ const BookingDialog = ({ open, onOpenChange, studio }: BookingDialogProps) => {
 						</div>
 					</div>
 
-					<Button type="submit" className="h-11 w-full rounded-xl">
-						Confirm Booking Request
+					<Button
+						type="submit"
+						className="h-11 w-full rounded-xl cursor-pointer"
+						disabled={isSubmitting}
+					>
+						{isSubmitting
+							? "Booking Request sending..."
+							: "Confirm Booking Request"}
 					</Button>
 				</form>
 			</DialogContent>

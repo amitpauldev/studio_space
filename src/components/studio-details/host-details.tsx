@@ -48,7 +48,7 @@ const HostDetails = ({ host, memberSince }: HostDetailsProps) => {
 
 			<a
 				href={`mailto:${host.email}`}
-				className="mt-4 flex h-9 w-full items-center justify-center gap-2 rounded-xl bg-primary text-sm font-medium text-white transition-colors duration-300 hover:bg-primary-hover"
+				className="mt-4 flex h-9 w-full items-center justify-center gap-2 rounded-xl bg-primary/5 text-sm font-medium text-primary border border-primary transition-colors duration-300 hover:bg-primary-hover"
 			>
 				<MessageCircle size={16} />
 				Message host

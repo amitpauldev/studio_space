@@ -4,7 +4,7 @@ const categoryColors: Record<StudioCategory, string> = {
 	"photo-studio": "bg-primary text-primary-foreground",
 	"film-stage": "bg-orange-600 text-white",
 	"podcast-lounge": "bg-rose-500 text-white",
-	"music-suite": "bg-secondary text-secondary-foreground",
+	"music-suite": "bg-amber-400 text-secondary-foreground",
 	workshop: "bg-purple-600 text-white",
 };
 

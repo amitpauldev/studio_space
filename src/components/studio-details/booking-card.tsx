@@ -30,8 +30,8 @@ const BookingCard = ({ studio }: BookingCardProps) => {
 					Minimum 1 hour booking
 				</li>
 				<li className="flex items-center gap-2">
-					<ShieldCheck size={14} className="shrink-0 text-primary" />
-					${studio.securityDeposit} refundable deposit
+					<ShieldCheck size={14} className="shrink-0 text-primary" />$
+					{studio.securityDeposit} refundable deposit
 				</li>
 				<li className="flex items-center gap-2">
 					<BadgeCheck size={14} className="shrink-0 text-primary" />
@@ -41,7 +41,7 @@ const BookingCard = ({ studio }: BookingCardProps) => {
 
 			<Button
 				onClick={() => setOpen(true)}
-				className="h-11 w-full rounded-xl text-base font-semibold"
+				className="h-11 w-full rounded-xl text-base font-semibold cursor-pointer"
 			>
 				Book Space Now
 			</Button>

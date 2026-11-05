@@ -60,7 +60,10 @@ const StudioDetailsView = ({ studio }: StudioDetailsViewProps) => {
 					<DetailOverview overview={studio.overview} />
 					<StudioSpecs studio={studio} />
 					<AmenitiesList amenities={studio.amenities} />
-					<ReviewsSection reviews={reviews} />
+
+					<div className="hidden lg:block">
+						<ReviewsSection reviews={reviews} />
+					</div>
 				</div>
 
 				{/* Sidebar */}
@@ -73,6 +76,9 @@ const StudioDetailsView = ({ studio }: StudioDetailsViewProps) => {
 						/>
 					</div>
 				</aside>
+				<div className="mt-10 lg:hidden">
+					<ReviewsSection reviews={reviews} />
+				</div>
 			</div>
 		</div>
 	);
