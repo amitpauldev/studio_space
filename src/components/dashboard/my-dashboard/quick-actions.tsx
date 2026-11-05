@@ -1,11 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import {
-	Bookmark,
-	Compass,
-	DatabasePlus,
-	FolderCog,
-} from "lucide-react";
+import { Bookmark, Compass, DatabasePlus, FolderCog } from "lucide-react";
 
 type QuickActionsProps = {
 	myStudiosCount: number;
@@ -13,16 +8,12 @@ type QuickActionsProps = {
 	myBookingsCount: number;
 };
 
-type Action =
-	| "add-studio"
-	| "explore"
-	| "my-studios"
-	| "view-bookings";
+type Action = "add-studio" | "explore" | "my-listings" | "view-bookings";
 
 const actionIcons: Record<Action, React.ReactNode> = {
 	"add-studio": <DatabasePlus size={22} />,
 	explore: <Compass size={22} />,
-	"my-studios": <FolderCog size={22} />,
+	"my-listings": <FolderCog size={22} />,
 	"view-bookings": <Bookmark size={22} />,
 };
 
@@ -53,8 +44,8 @@ const QuickActions = ({
 			badge: `${totalStudiosCount} live`,
 		},
 		{
-			key: "my-studios",
-			label: "My Studios",
+			key: "my-listings",
+			label: "My Listings",
 			description: "Manage your listings",
 			href: "/my-listings",
 			badge: `${myStudiosCount} owned`,

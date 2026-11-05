@@ -129,7 +129,7 @@ export default function AuthenticatedState() {
 								}
 							>
 								<FolderCog />
-								My Studio Listings
+								My Listings
 							</DropdownMenuItem>
 
 							<DropdownMenuItem
