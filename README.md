@@ -37,7 +37,7 @@ Guests can explore creative spaces, view studio details, and request bookings. H
 
 ### Authentication & Database
 
-- [Better Auth](https://www.better-auth.com/) – Authentication and session management
+- [Better Auth](https://www.better-auth.com/) – Authentication and session management..
 - [MongoDB](https://www.mongodb.com/) – Database
 
 ### Development & Deployment
