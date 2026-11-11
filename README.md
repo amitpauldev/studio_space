@@ -2,7 +2,7 @@
 
 **Discover, book, and manage creative spaces.**
 
-StudioSpace is a photography and creative-studio booking platform designed for photographers, filmmakers, podcasters, musicians, and other creative professionals.
+StudioSpace is a photography and creative-studio space booking platform designed for photographers, filmmakers, podcasters, musicians, and other creative professionals.
 
 Guests can explore creative spaces, view studio details, and request bookings. Hosts can list their studios, manage bookings, and monitor their listings through a dedicated dashboard.
 
